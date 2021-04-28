@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "drills",
+  "info": {
+    "name": "drill",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "drill_type": {
+      "type": "dynamiczone",
+      "components": [
+        "drill.vocabulary-drill"
+      ],
+      "max": 1
+    },
+    "Settings": {
+      "type": "component",
+      "repeatable": false,
+      "component": "drill.drill-settings"
+    },
+    "tags": {
+      "collection": "tag"
+    },
+    "drill_category": {
+      "type": "enumeration",
+      "enum": [
+        "Practice",
+        "Test",
+        "Exam",
+        "Assessment",
+        "Filter"
+      ],
+      "required": true
+    },
+    "FilterSettings": {
+      "type": "component",
+      "repeatable": false,
+      "component": "drill.filter-settings"
+    }
+  }
+}

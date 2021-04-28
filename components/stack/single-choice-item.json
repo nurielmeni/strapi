@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_stack_single_choice_items",
+  "info": {
+    "name": "SingleChoiceItem",
+    "icon": "window-maximize"
+  },
+  "options": {},
+  "attributes": {
+    "source": {
+      "type": "richtext"
+    },
+    "correct_choice": {
+      "type": "string"
+    },
+    "WrongChoice": {
+      "type": "component",
+      "repeatable": true,
+      "component": "stack.wrong-choice"
+    }
+  }
+}

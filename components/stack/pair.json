@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_stack_pairs",
+  "info": {
+    "name": "Pair",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "PairItem": {
+      "type": "component",
+      "repeatable": true,
+      "component": "stack.pair-item"
+    }
+  }
+}

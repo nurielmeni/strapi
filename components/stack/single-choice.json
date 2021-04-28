@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_stack_single_choices",
+  "info": {
+    "name": "SingleChoice",
+    "icon": "bullseye"
+  },
+  "options": {},
+  "attributes": {
+    "SingleChoiceItem": {
+      "type": "component",
+      "repeatable": true,
+      "component": "stack.single-choice-item"
+    }
+  }
+}

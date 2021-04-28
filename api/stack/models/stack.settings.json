@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "stacks",
+  "info": {
+    "name": "Stack",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "stackSource": {
+      "type": "dynamiczone",
+      "components": [
+        "stack.vocabulary",
+        "stack.pair",
+        "stack.multi-choice",
+        "stack.single-choice",
+        "stack.content"
+      ],
+      "max": 1
+    },
+    "area": {
+      "model": "area"
+    },
+    "level": {
+      "model": "level"
+    },
+    "tags": {
+      "collection": "tag"
+    },
+    "target_lang": {
+      "type": "enumeration",
+      "enum": [
+        "Hebrew",
+        "Russian",
+        "Ukrainian",
+        "Arabic"
+      ]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tags",
+  "info": {
+    "name": "Tag",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "regex": "^([A-Z_:0-9]){2,20}$",
+      "unique": true,
+      "required": true
+    }
+  }
+}

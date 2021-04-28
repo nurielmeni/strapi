@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_stack_contents",
+  "info": {
+    "name": "Content",
+    "icon": "book-open"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

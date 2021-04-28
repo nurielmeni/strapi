@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sections",
+  "info": {
+    "name": "section",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "is_reset": {
+      "type": "boolean"
+    },
+    "Step": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.step"
+    },
+    "terms_of_transition": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.transitions"
+    }
+  }
+}

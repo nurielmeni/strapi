@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_stack_choices",
+  "info": {
+    "name": "choices",
+    "icon": "check-circle"
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string"
+    },
+    "correct": {
+      "type": "boolean"
+    }
+  }
+}

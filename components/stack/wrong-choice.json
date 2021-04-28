@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_stack_wrong_choices",
+  "info": {
+    "name": "WrongChoice",
+    "icon": "not-equal"
+  },
+  "options": {},
+  "attributes": {
+    "wrong_choice": {
+      "type": "string"
+    }
+  }
+}

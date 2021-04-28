@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_courses",
+  "info": {
+    "name": "UserCourse",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "course": {
+      "model": "course"
+    },
+    "start_date": {
+      "type": "datetime"
+    },
+    "completed_date": {
+      "type": "datetime"
+    },
+    "score": {
+      "type": "integer"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "rate": {
+      "type": "decimal",
+      "max": 5,
+      "min": 0
+    },
+    "progress": {
+      "type": "json"
+    }
+  }
+}

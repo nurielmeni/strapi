@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_sections_steps",
+  "info": {
+    "name": "Step",
+    "icon": "file-signature",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "stack": {
+      "model": "stack"
+    },
+    "drill": {
+      "model": "drill"
+    },
+    "terms_of_transition": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.transitions"
+    },
+    "allow_incomplete_step": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

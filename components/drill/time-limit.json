@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_drill_time_limits",
+  "info": {
+    "name": "TimeLimit",
+    "icon": "clock",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "is_time_limited": {
+      "type": "boolean",
+      "required": true
+    },
+    "seconds": {
+      "type": "integer",
+      "min": 2,
+      "max": 120
+    },
+    "show_clock": {
+      "type": "boolean"
+    }
+  }
+}

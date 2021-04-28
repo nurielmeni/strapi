@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_steps_transitions",
+  "info": {
+    "name": "transitions",
+    "icon": "tasks",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "from": {
+      "type": "integer",
+      "max": 100,
+      "min": 0,
+      "required": true
+    },
+    "to": {
+      "type": "integer",
+      "max": 100,
+      "min": 0,
+      "unique": false,
+      "required": true
+    },
+    "action": {
+      "type": "enumeration",
+      "enum": [
+        "Redo_Current",
+        "Go_To_Next",
+        "Go_To_Previous",
+        "Jump_To_Number",
+        "End_All"
+      ],
+      "required": true
+    },
+    "jump_to": {
+      "type": "integer",
+      "min": 0
+    },
+    "result_feedback": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}
