@@ -2,7 +2,8 @@
   "collectionName": "components_drill_pairs",
   "info": {
     "name": "Pairs",
-    "icon": "american-sign-language-interpreting"
+    "icon": "american-sign-language-interpreting",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -20,6 +21,11 @@
       "type": "component",
       "repeatable": false,
       "component": "drill.speach-recognition"
+    },
+    "TypingAids": {
+      "type": "component",
+      "repeatable": false,
+      "component": "drill.typing-aids"
     }
   }
 }
