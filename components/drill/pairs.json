@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_drill_pairs",
+  "info": {
+    "name": "Pairs",
+    "icon": "american-sign-language-interpreting"
+  },
+  "options": {},
+  "attributes": {
+    "QASettings": {
+      "type": "component",
+      "repeatable": false,
+      "component": "drill.qa-settings"
+    },
+    "TypingRules": {
+      "type": "component",
+      "repeatable": false,
+      "component": "drill.typing-rules"
+    },
+    "SpeechRecognition": {
+      "type": "component",
+      "repeatable": false,
+      "component": "drill.speach-recognition"
+    }
+  }
+}

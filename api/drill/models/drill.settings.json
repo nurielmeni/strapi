@@ -20,7 +20,8 @@
     "drill_type": {
       "type": "dynamiczone",
       "components": [
-        "drill.vocabulary-drill"
+        "drill.vocabulary-drill",
+        "drill.pairs"
       ],
       "max": 1
     },

@@ -10,12 +10,27 @@
     "timestamps": true,
     "draftAndPublish": true
   },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "description": {
-      "type": "richtext"
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "stackSource": {
       "type": "dynamiczone",
@@ -26,7 +41,12 @@
         "stack.single-choice",
         "stack.content"
       ],
-      "max": 1
+      "max": 1,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "area": {
       "model": "area"
@@ -44,7 +64,12 @@
         "Russian",
         "Ukrainian",
         "Arabic"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

@@ -10,18 +10,38 @@
     "timestamps": true,
     "draftAndPublish": true
   },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "course": {
       "model": "course"
     },
     "start_date": {
-      "type": "datetime"
+      "type": "datetime",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "completed_date": {
-      "type": "datetime"
+      "type": "datetime",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "score": {
-      "type": "integer"
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "user": {
       "plugin": "users-permissions",
@@ -30,10 +50,20 @@
     "rate": {
       "type": "decimal",
       "max": 5,
-      "min": 0
+      "min": 0,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "progress": {
-      "type": "json"
+      "type": "json",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_drill_qa_settings",
+  "info": {
+    "name": "QASettings",
+    "icon": "database"
+  },
+  "options": {},
+  "attributes": {
+    "direction": {
+      "type": "enumeration",
+      "enum": [
+        "Source_to_Target",
+        "Target_to_Source"
+      ]
+    },
+    "reply_method": {
+      "type": "enumeration",
+      "enum": [
+        "Typing_the_Reply",
+        "Clicking_the_Reply"
+      ]
+    },
+    "source_display_method": {
+      "type": "enumeration",
+      "enum": [
+        "Reading",
+        "Hearing",
+        "Reading_And_Hearing"
+      ]
+    },
+    "number_of_options": {
+      "type": "integer",
+      "max": 16,
+      "min": 1
+    }
+  }
+}
