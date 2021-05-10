@@ -21,10 +21,11 @@ module.exports = {
 
   async findOne(ctx) {
     const { id } = ctx.params;
-    const { id: userId } = ctx.state.user;
+    const { profile: userProfile } = ctx.state.user;
     let entity;
 
-    if (Number(id) !== Number(userId)) {
+    console.log('Profile findOne: id, userId', id, userProfile);
+    if (Number(id) !== Number(userProfile)) {
       return ctx.forbidden();
     }
 
@@ -47,9 +48,12 @@ module.exports = {
    */
 
   async update(ctx) {
-    console.log(ctx);
+    console.log('Profile update:ctx',ctx);
     const { id } = ctx.params;
     const { id: userId } = ctx.state.user;
+    const body = ctx.request.body;
+    
+    console.log('Profile:update:body',body)
 
     let entity;
 
@@ -62,8 +66,8 @@ module.exports = {
       return ctx.unauthorized(`You can't update this entry`);
     }
 
-    //console.log("Profile Body", ctx.request.body);
-    entity = await strapi.services.profile.update({ id }, ctx.request.body);
+    entity = await strapi.services.profile.update({ id }, body);
+    console.log("Profile:update:entity", entity);
 
     return sanitizeEntity(entity, { model: strapi.models.profile });
   },

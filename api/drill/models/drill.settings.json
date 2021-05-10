@@ -10,12 +10,27 @@
     "timestamps": true,
     "draftAndPublish": true
   },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "description": {
-      "type": "richtext"
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "drill_type": {
       "type": "dynamiczone",
@@ -23,12 +38,22 @@
         "drill.vocabulary-drill",
         "drill.pairs"
       ],
-      "max": 1
+      "max": 1,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "Settings": {
       "type": "component",
       "repeatable": false,
-      "component": "drill.drill-settings"
+      "component": "drill.drill-settings",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "tags": {
       "collection": "tag"
@@ -42,12 +67,22 @@
         "Assessment",
         "Filter"
       ],
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "FilterSettings": {
       "type": "component",
       "repeatable": false,
-      "component": "drill.filter-settings"
+      "component": "drill.filter-settings",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

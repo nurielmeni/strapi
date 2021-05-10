@@ -18,7 +18,8 @@
         "Home",
         "Work",
         "Other"
-      ]
+      ],
+      "default": "Mobile"
     }
   }
 }
