@@ -13,7 +13,10 @@
     "target": {
       "type": "string"
     },
-    "scatter": {
+    "target_scatter": {
+      "type": "string"
+    },
+    "source_scatter": {
       "type": "string"
     }
   }

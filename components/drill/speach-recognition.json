@@ -16,10 +16,6 @@
       "type": "boolean",
       "required": true,
       "default": false
-    },
-    "enable_TTS_on_source": {
-      "type": "boolean",
-      "default": false
     }
   }
 }
