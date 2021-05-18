@@ -57,7 +57,8 @@
     },
     "AllowReset": {
       "type": "boolean",
-      "required": true
+      "required": true,
+      "default": false
     }
   }
 }
