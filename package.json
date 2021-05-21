@@ -43,6 +43,8 @@
     "strapi-plugin-upload": "3.6.2",
     "strapi-plugin-users-permissions": "3.6.2",
     "strapi-provider-email-gmail-2lo": "^3.5.1",
+    "strapi-provider-upload-digitalocean": "^3.0.0-alpha.26",
+    "strapi-provider-upload-digitaloceanspaces": "^1.0.0",
     "strapi-utils": "3.6.2",
     "striptags": "^3.1.1"
   },
