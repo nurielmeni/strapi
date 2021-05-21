@@ -80,11 +80,24 @@ module.exports = {
 
   async create(ctx) {
     const { id: userId } = ctx.state.user;
+    const body = ctx.request.body;
 
-    const entity = await strapi.services.profile.create({
-      user: userId,
-      ...ctx.request.body
+    const [profile] = await strapi.services.profile.find({
+      'user.id': userId
     });
+    
+    // If the user has a profile assign to him, it will be updated 
+    // If the user has no profile assign to him, it will be created 
+    let entity;
+    if (!profile) {
+      entity = await strapi.services.profile.create({
+        user: userId,
+        ...ctx.request.body
+      });
+    } else {
+      entity = await strapi.services.profile.update({ id: profile.id }, body);
+    }
+
 
     return sanitizeEntity(entity, { model: strapi.models.profile });
   }
