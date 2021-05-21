@@ -92,7 +92,7 @@ module.exports = {
     if (!profile) {
       entity = await strapi.services.profile.create({
         user: userId,
-        ...ctx.request.body
+        ...body
       });
     } else {
       entity = await strapi.services.profile.update({ id: profile.id }, body);
