@@ -24,6 +24,15 @@
         }
       }
     },
+    "subtitle": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "maxLength": 256
+    },
     "description": {
       "type": "richtext",
       "pluginOptions": {
