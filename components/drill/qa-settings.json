@@ -2,7 +2,8 @@
   "collectionName": "components_drill_qa_settings",
   "info": {
     "name": "QASettings",
-    "icon": "database"
+    "icon": "database",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -31,7 +32,7 @@
     "number_of_options": {
       "type": "integer",
       "max": 16,
-      "min": 1
+      "min": 0
     }
   }
 }

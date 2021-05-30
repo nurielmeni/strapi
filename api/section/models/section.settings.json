@@ -59,7 +59,7 @@
         }
       }
     },
-    "terms_of_transition": {
+    "section_terms_of_transition": {
       "type": "component",
       "repeatable": true,
       "component": "sections.transitions",
