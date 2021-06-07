@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_stack_blanks",
+  "info": {
+    "name": "Blank",
+    "icon": "window-minimize"
+  },
+  "options": {},
+  "attributes": {
+    "PlaceHolder": {
+      "type": "string",
+      "required": true
+    },
+    "Correct": {
+      "type": "string",
+      "required": true
+    },
+    "WrongOptions": {
+      "type": "string"
+    }
+  }
+}

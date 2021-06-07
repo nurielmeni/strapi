@@ -39,7 +39,8 @@
         "stack.pair",
         "stack.multi-choice",
         "stack.single-choice",
-        "stack.content"
+        "stack.content",
+        "stack.fill-in-the-blank"
       ],
       "max": 1,
       "pluginOptions": {
@@ -56,20 +57,6 @@
     },
     "tags": {
       "collection": "tag"
-    },
-    "target_lang": {
-      "type": "enumeration",
-      "enum": [
-        "Hebrew",
-        "Russian",
-        "Ukrainian",
-        "Arabic"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
     }
   }
 }
