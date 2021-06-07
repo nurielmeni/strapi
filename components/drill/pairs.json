@@ -20,7 +20,7 @@
     "SpeechRecognition": {
       "type": "component",
       "repeatable": false,
-      "component": "drill.speach-recognition"
+      "component": "drill.speech-recognition"
     },
     "TypingAids": {
       "type": "component",

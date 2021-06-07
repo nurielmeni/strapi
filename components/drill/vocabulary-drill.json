@@ -17,10 +17,10 @@
       "repeatable": false,
       "component": "drill.typing-rules"
     },
-    "SpeachRecognition": {
+    "SpeechRecognition": {
       "type": "component",
       "repeatable": false,
-      "component": "drill.speach-recognition"
+      "component": "drill.speech-recognition"
     }
   }
 }

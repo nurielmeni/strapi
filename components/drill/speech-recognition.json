@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_drill_speach_recognitions",
+  "collectionName": "components_drill_speech_recognitions",
   "info": {
-    "name": "SpeachRecognition",
+    "name": "SpeechRecognition",
     "icon": "volume-down",
     "description": ""
   },
