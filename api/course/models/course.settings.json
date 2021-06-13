@@ -72,9 +72,6 @@
         }
       }
     },
-    "sections": {
-      "collection": "section"
-    },
     "CourseSections": {
       "type": "component",
       "repeatable": true,
