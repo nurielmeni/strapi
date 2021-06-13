@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_course_sections",
+  "info": {
+    "name": "CourseSection",
+    "icon": "list-ol",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "sectionName": {
+      "type": "string"
+    },
+    "section": {
+      "model": "section"
+    },
+    "termsOfTransition": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.transitions"
+    }
+  }
+}

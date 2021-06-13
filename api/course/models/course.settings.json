@@ -74,6 +74,17 @@
     },
     "sections": {
       "collection": "section"
+    },
+    "CourseSections": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.course-section",
+      "required": true
     }
   }
 }
