@@ -16,7 +16,10 @@
       "component": "stack.matching-values",
       "required": true
     },
-    "AdditionalItems": {
+    "DummyContainers": {
+      "type": "string"
+    },
+    "DummyItems": {
       "type": "string"
     }
   }

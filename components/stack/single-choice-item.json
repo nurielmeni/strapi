@@ -2,20 +2,24 @@
   "collectionName": "components_stack_single_choice_items",
   "info": {
     "name": "SingleChoiceItem",
-    "icon": "window-maximize"
+    "icon": "window-maximize",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "source": {
-      "type": "richtext"
+      "type": "string",
+      "required": true
     },
     "correct_choice": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "WrongChoice": {
       "type": "component",
       "repeatable": true,
-      "component": "stack.wrong-choice"
+      "component": "stack.wrong-choice",
+      "required": true
     }
   }
 }

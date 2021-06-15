@@ -40,8 +40,8 @@
         "stack.multi-choice",
         "stack.single-choice",
         "stack.content",
-        "stack.fill-in-the-blank",
-        "stack.cross-match"
+        "stack.cross-match",
+        "stack.fill-in-the-blank"
       ],
       "max": 1,
       "pluginOptions": {

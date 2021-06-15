@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_stack_fill_in_the_blank_items",
+  "info": {
+    "name": "FillInTheBlankItem",
+    "icon": "border-style"
+  },
+  "options": {},
+  "attributes": {
+    "Sentence": {
+      "type": "string",
+      "required": true
+    },
+    "BlankItem": {
+      "type": "component",
+      "repeatable": true,
+      "component": "stack.blank",
+      "required": true
+    }
+  }
+}

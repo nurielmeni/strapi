@@ -6,15 +6,10 @@
   },
   "options": {},
   "attributes": {
-    "Sentence": {
-      "type": "text",
-      "required": true
-    },
-    "BlankItem": {
+    "FillInTheBlankItem": {
       "type": "component",
       "repeatable": true,
-      "component": "stack.blank",
-      "required": true
+      "component": "stack.fill-in-the-blank-item"
     }
   }
 }
