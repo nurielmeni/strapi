@@ -29,7 +29,7 @@
         "Redo_Current",
         "Go_To_Next",
         "Go_To_Previous",
-        "Jump_To_Number",
+        "Skip",
         "End_All"
       ],
       "required": true

@@ -7,7 +7,8 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "debug": "NODE_OPTIONS='--inspect=0.0.0.0:9229' strapi start"
   },
   "dependencies": {
     "@vue/eslint-config-standard": "^6.0.0",
@@ -40,6 +41,7 @@
     "strapi-plugin-content-type-builder": "3.6.2",
     "strapi-plugin-email": "3.6.2",
     "strapi-plugin-i18n": "^3.6.2",
+    "strapi-plugin-import-export-content": "^0.3.2",
     "strapi-plugin-upload": "3.6.2",
     "strapi-plugin-users-permissions": "3.6.2",
     "strapi-provider-email-gmail-2lo": "^3.5.1",
