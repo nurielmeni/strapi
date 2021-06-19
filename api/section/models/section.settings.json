@@ -58,16 +58,6 @@
           "localized": true
         }
       }
-    },
-    "section_terms_of_transition": {
-      "type": "component",
-      "repeatable": true,
-      "component": "sections.transitions",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
     }
   }
 }
