@@ -19,8 +19,7 @@ function LeftMenuFooter({ version }) {
         <span>Powered By</span>
         &nbsp;
         <span>&#169;</span>
-        <script>document.write(new Date().getFullYear())</script>
-        &nbsp;
+        new Date().getFullYear() &nbsp;
         <A
           key="website"
           href="https://thetalms.com"

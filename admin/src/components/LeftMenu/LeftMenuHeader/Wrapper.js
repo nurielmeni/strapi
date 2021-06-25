@@ -26,6 +26,9 @@ const Wrapper = styled.div`
     background-repeat: no-repeat;
     background-position: left center;
     background-size: auto 2.5rem;
+    line-height: 6rem;
+    padding-left: 3.5rem;
+    color: #ffffff;
   }
 `;
 
