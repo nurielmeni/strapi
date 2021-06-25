@@ -16,7 +16,11 @@ function LeftMenuFooter({ version }) {
   return (
     <Wrapper>
       <div className="poweredBy">
-        <span>Powered By</span>&nbsp;
+        <span>Powered By</span>
+        &nbsp;
+        <span>&#169;</span>
+        <script>document.write(new Date().getFullYear())</script>
+        &nbsp;
         <A
           key="website"
           href="https://thetalms.com"
