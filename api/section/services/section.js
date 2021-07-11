@@ -95,7 +95,9 @@ const validateTermsOfTransitionRange = (
   rangeBegin = 0,
   rangeEnd = 100
 ) => {
-  if (!steps || !Array.isArray(steps)) return new ValidationObj();
+  if (!steps || !Array.isArray(steps)) return;
+
+  if (steps.length < 1) return new ValidationObj();
 
   const termsOfTransitions = steps.map((s) => s.terms_of_transition);
   if (termsOfTransitions.length === 0) return new ValidationObj();
@@ -108,7 +110,7 @@ const validateTermsOfTransitionRange = (
     return new ValidationObj(false, error);
   }
 
-  return new ValidationObj(true, 'Valid rang for terms of transition.');
+  return true;
 };
 
 module.exports = {
