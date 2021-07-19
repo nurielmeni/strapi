@@ -22,7 +22,7 @@ function LeftMenuFooter({ version }) {
         {new Date().getFullYear()} &nbsp;
         <A
           key="website"
-          href="https://thetalms.com"
+          href="thetalms.com"
           target="_blank"
           rel="noopener noreferrer"
         >
