@@ -5,4 +5,25 @@
  * to customize this model
  */
 
-module.exports = {};
+module.exports = {
+  lifecycles: {
+    // Called before an entry is created
+    beforeCreate(params, data) {
+      const Step = data && data?.Step;
+      const res = strapi.services.section.validateTermsOfTransitionRange(Step);
+      if (res && res.isValid === false)
+        throw strapi.errors.badRequest(res.errMessage);
+    },
+    // Called after an entry is created
+    afterCreate(result) {},
+    // Called before an entry is created
+    beforeUpdate(params, data) {
+      const Step = data && data?.Step;
+      const res = strapi.services.section.validateTermsOfTransitionRange(Step);
+      if (res && res.isValid === false)
+        throw strapi.errors.badRequest(res.errMessage);
+    },
+    // Called after an entry is created
+    afterUpdate(result) {}
+  }
+};

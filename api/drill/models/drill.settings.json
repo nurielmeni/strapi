@@ -37,14 +37,17 @@
       "type": "dynamiczone",
       "components": [
         "drill.vocabulary-drill",
-        "drill.pairs"
+        "drill.pairs",
+        "drill.single-choice",
+        "drill.multi-choice"
       ],
       "max": 1,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      }
+      },
+      "required": true
     },
     "Settings": {
       "type": "component",
@@ -54,7 +57,8 @@
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     },
     "tags": {
       "collection": "tag"
