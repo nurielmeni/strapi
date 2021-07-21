@@ -39,7 +39,8 @@
         "drill.vocabulary-drill",
         "drill.pairs",
         "drill.single-choice",
-        "drill.multi-choice"
+        "drill.multi-choice",
+        "drill.fill-in-the-blank"
       ],
       "max": 1,
       "pluginOptions": {
