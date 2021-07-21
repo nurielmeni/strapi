@@ -5,7 +5,7 @@ import Img from './Img';
 const Logo = () => (
   <div>
     <Img src={LogoStrapi} alt="strapi-logo" />
-    <span>FLASH Studies</span>
+    <span>Theta LMS</span>
   </div>
 );
 
