@@ -1,16 +1,15 @@
 {
-    "collectionName": "components_stack_cross_matchs",
-    "info": {
-      "name": "CrossMatch",
-      "icon": "bullseye"
-    },
-    "options": {},
-    "attributes": {
-      "CrossMatchItem": {
-        "type": "component",
-        "repeatable": true,
-        "component": "stack.cross-match-item"
-      }
+  "collectionName": "components_stack_cross_matchs",
+  "info": {
+    "name": "CrossMatch",
+    "icon": "arrows-alt-h"
+  },
+  "options": {},
+  "attributes": {
+    "CrossMatchItem": {
+      "type": "component",
+      "repeatable": true,
+      "component": "stack.cross-match-item"
     }
   }
-  
+}
