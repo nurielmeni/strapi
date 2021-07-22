@@ -61,18 +61,9 @@
       },
       "required": true
     },
-    "tags": {
-      "collection": "tag"
-    },
     "drill_category": {
       "type": "enumeration",
-      "enum": [
-        "Practice",
-        "Test",
-        "Exam",
-        "Assessment",
-        "Filter"
-      ],
+      "enum": ["Practice", "Test", "Exam", "Assessment", "Filter"],
       "required": true,
       "pluginOptions": {
         "i18n": {
@@ -89,6 +80,15 @@
           "localized": true
         }
       }
+    },
+    "tags": {
+      "collection": "tag"
+    },
+    "areas": {
+      "collection": "area"
+    },
+    "levels": {
+      "collection": "level"
     }
   }
 }
