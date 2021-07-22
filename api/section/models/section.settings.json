@@ -58,6 +58,15 @@
           "localized": true
         }
       }
+    },
+    "tags": {
+      "collection": "tag"
+    },
+    "areas": {
+      "collection": "area"
+    },
+    "levels": {
+      "collection": "level"
     }
   }
 }
