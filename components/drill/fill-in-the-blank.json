@@ -20,6 +20,10 @@
         "Type"
       ],
       "required": true
+    },
+    "show_availiable_choices": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

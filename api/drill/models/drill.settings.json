@@ -63,7 +63,13 @@
     },
     "drill_category": {
       "type": "enumeration",
-      "enum": ["Practice", "Test", "Exam", "Assessment", "Filter"],
+      "enum": [
+        "Practice",
+        "Test",
+        "Exam",
+        "Assessment",
+        "Filter"
+      ],
       "required": true,
       "pluginOptions": {
         "i18n": {
