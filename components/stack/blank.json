@@ -20,9 +20,6 @@
       "repeatable": true,
       "component": "stack.wrong-choice",
       "required": true
-    },
-    "WrongOptions": {
-      "type": "string"
     }
   }
 }
