@@ -2,15 +2,20 @@
   "collectionName": "components_stack_choices",
   "info": {
     "name": "choices",
-    "icon": "check-circle"
+    "icon": "check-circle",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "value": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "correct": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": false,
+      "default": false
     }
   }
 }

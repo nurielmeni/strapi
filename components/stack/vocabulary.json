@@ -10,7 +10,9 @@
     "VocabularyItem": {
       "type": "component",
       "repeatable": true,
-      "component": "stack.vocabulary-item"
+      "component": "stack.vocabulary-item",
+      "required": true,
+      "min": 1
     }
   }
 }

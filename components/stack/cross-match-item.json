@@ -8,13 +8,16 @@
   "options": {},
   "attributes": {
     "Sentence": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "MatchingValues": {
       "type": "component",
       "repeatable": true,
       "component": "stack.matching-values",
-      "required": true
+      "required": true,
+      "min": 1
     },
     "DummyContainers": {
       "type": "string"

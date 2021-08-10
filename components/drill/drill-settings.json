@@ -28,7 +28,8 @@
     },
     "show_interim_results": {
       "type": "boolean",
-      "required": true
+      "required": false,
+      "default": true
     },
     "handling_of_mistakes": {
       "type": "enumeration",
@@ -57,7 +58,7 @@
     },
     "AllowReset": {
       "type": "boolean",
-      "required": true,
+      "required": false,
       "default": false
     }
   }

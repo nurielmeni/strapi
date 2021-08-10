@@ -9,7 +9,8 @@
   "attributes": {
     "source": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "correct_choice": {
       "type": "string",
@@ -19,7 +20,8 @@
       "type": "component",
       "repeatable": true,
       "component": "stack.wrong-choice",
-      "required": true
+      "required": true,
+      "min": 1
     }
   }
 }

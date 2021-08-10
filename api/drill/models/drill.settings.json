@@ -20,10 +20,11 @@
       "type": "string",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
-      "required": true
+      "required": true,
+      "unique": false
     },
     "description": {
       "type": "richtext",
@@ -31,7 +32,8 @@
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": false
     },
     "drill_type": {
       "type": "dynamiczone",
@@ -45,10 +47,11 @@
       "max": 1,
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
-      "required": true
+      "required": true,
+      "min": 1
     },
     "Settings": {
       "type": "component",
@@ -56,7 +59,7 @@
       "component": "drill.drill-settings",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "required": true
@@ -73,7 +76,7 @@
       "required": true,
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
@@ -83,7 +86,7 @@
       "component": "drill.filter-settings",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },

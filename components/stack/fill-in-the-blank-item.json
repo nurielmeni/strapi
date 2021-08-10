@@ -8,13 +8,15 @@
   "attributes": {
     "Sentence": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "BlankItem": {
       "type": "component",
       "repeatable": true,
       "component": "stack.blank",
-      "required": true
+      "required": true,
+      "min": 1
     }
   }
 }

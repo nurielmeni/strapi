@@ -8,10 +8,14 @@
   "options": {},
   "attributes": {
     "source": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "target": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "target_scatter": {
       "type": "string"
