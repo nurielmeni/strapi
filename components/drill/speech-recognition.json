@@ -9,13 +9,13 @@
   "attributes": {
     "enable_TTS_on_reply": {
       "type": "boolean",
-      "required": true,
-      "default": false
+      "required": false,
+      "default": true
     },
     "enable_STT_on_reply": {
       "type": "boolean",
-      "required": true,
-      "default": false
+      "required": false,
+      "default": true
     }
   }
 }

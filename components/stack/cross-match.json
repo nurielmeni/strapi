@@ -9,7 +9,9 @@
     "CrossMatchItem": {
       "type": "component",
       "repeatable": true,
-      "component": "stack.cross-match-item"
+      "component": "stack.cross-match-item",
+      "required": true,
+      "min": 1
     }
   }
 }

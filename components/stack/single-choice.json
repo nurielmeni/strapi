@@ -7,7 +7,9 @@
   "options": {},
   "attributes": {
     "SingleChoiceItem": {
-      "type": "component",
+      "required": true,
+      "min": 1
+,      "type": "component",
       "repeatable": true,
       "component": "stack.single-choice-item"
     }

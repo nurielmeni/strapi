@@ -22,7 +22,8 @@
         "i18n": {
           "localized": false
         }
-      }
+      },
+      "required": true
     },
     "description": {
       "type": "richtext",
@@ -48,7 +49,9 @@
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "min": 1,
+      "required": true
     },
     "area": {
       "model": "area"
