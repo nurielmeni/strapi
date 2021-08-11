@@ -8,8 +8,7 @@
   "attributes": {
     "Sentence": {
       "type": "string",
-      "required": true,
-      "unique": true
+      "required": true
     },
     "BlankItem": {
       "type": "component",

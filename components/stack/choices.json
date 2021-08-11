@@ -9,8 +9,7 @@
   "attributes": {
     "value": {
       "type": "string",
-      "required": true,
-      "unique": true
+      "required": true
     },
     "correct": {
       "type": "boolean",

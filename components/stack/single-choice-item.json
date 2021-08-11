@@ -9,8 +9,7 @@
   "attributes": {
     "source": {
       "type": "string",
-      "required": true,
-      "unique": true
+      "required": true
     },
     "correct_choice": {
       "type": "string",

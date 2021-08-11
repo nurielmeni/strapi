@@ -8,7 +8,8 @@
   "options": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "stack": {
       "model": "stack"
@@ -19,7 +20,8 @@
     "terms_of_transition": {
       "type": "component",
       "repeatable": true,
-      "component": "sections.transitions"
+      "component": "sections.transitions",
+      "required": false
     },
     "allow_incomplete_step": {
       "type": "boolean",
