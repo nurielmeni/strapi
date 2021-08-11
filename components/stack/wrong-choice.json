@@ -9,8 +9,7 @@
   "attributes": {
     "wrong_choice": {
       "type": "string",
-      "required": true,
-      "unique": true
+      "required": true
     }
   }
 }

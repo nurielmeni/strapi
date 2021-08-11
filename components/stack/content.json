@@ -2,18 +2,17 @@
   "collectionName": "components_stack_contents",
   "info": {
     "name": "Content",
-    "icon": "book-open"
+    "icon": "book-open",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "name": {
-      "type": "string"
-    },
     "description": {
       "type": "text"
     },
     "content": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     }
   }
 }

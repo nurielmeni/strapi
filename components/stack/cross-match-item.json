@@ -9,8 +9,7 @@
   "attributes": {
     "Sentence": {
       "type": "string",
-      "required": true,
-      "unique": true
+      "required": true
     },
     "MatchingValues": {
       "type": "component",
