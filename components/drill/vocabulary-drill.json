@@ -10,7 +10,8 @@
     "QASettings": {
       "type": "component",
       "repeatable": false,
-      "component": "drill.qa-settings"
+      "component": "drill.qa-settings",
+      "required": true
     },
     "TypingRules": {
       "type": "component",

@@ -7,6 +7,8 @@
   "options": {},
   "attributes": {
     "MultiChoiceItem": {
+      "required": true,
+      "min": 1,
       "type": "component",
       "repeatable": true,
       "component": "stack.multi-choice-item"

@@ -9,15 +9,18 @@
   "attributes": {
     "is_time_limited": {
       "type": "boolean",
-      "required": true
+      "required": false,
+      "default": true
     },
     "seconds": {
       "type": "integer",
       "min": 2,
-      "max": 120
+      "max": 120,
+      "required": true
     },
     "show_clock": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": true
     }
   }
 }

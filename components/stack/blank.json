@@ -9,7 +9,8 @@
   "attributes": {
     "PlaceHolder": {
       "type": "string",
-      "required": true
+      "required": true,
+      "minLength": 1
     },
     "Correct": {
       "type": "string",
@@ -19,10 +20,8 @@
       "type": "component",
       "repeatable": true,
       "component": "stack.wrong-choice",
-      "required": true
-    },
-    "WrongOptions": {
-      "type": "string"
+      "required": true,
+      "min": 1
     }
   }
 }

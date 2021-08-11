@@ -34,20 +34,20 @@
     "request": "^2.88.2",
     "rss-parser": "^3.7.3",
     "simple-statistics": "^7.0.7",
-    "strapi": "3.6.2",
-    "strapi-admin": "3.6.2",
-    "strapi-connector-bookshelf": "3.6.2",
-    "strapi-plugin-content-manager": "3.6.2",
-    "strapi-plugin-content-type-builder": "3.6.2",
-    "strapi-plugin-email": "3.6.2",
+    "strapi": "3.6.5",
+    "strapi-admin": "3.6.5",
+    "strapi-connector-bookshelf": "3.6.5",
+    "strapi-plugin-content-manager": "3.6.5",
+    "strapi-plugin-content-type-builder": "3.6.5",
+    "strapi-plugin-email": "3.6.5",
     "strapi-plugin-i18n": "^3.6.2",
     "strapi-plugin-import-export-content": "^0.3.2",
-    "strapi-plugin-upload": "3.6.2",
-    "strapi-plugin-users-permissions": "3.6.2",
+    "strapi-plugin-upload": "3.6.5",
+    "strapi-plugin-users-permissions": "3.6.5",
     "strapi-provider-email-gmail-2lo": "^3.5.1",
     "strapi-provider-upload-digitalocean": "^3.0.0-alpha.26",
     "strapi-provider-upload-digitaloceanspaces": "^1.0.0",
-    "strapi-utils": "3.6.2",
+    "strapi-utils": "3.6.5",
     "striptags": "^3.1.1"
   },
   "author": {
@@ -60,5 +60,6 @@
     "node": ">=10.16.0 <=14.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {}
 }

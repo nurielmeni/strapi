@@ -22,7 +22,8 @@
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     },
     "subtitle": {
       "type": "string",
@@ -39,7 +40,8 @@
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     },
     "image": {
       "model": "file",
@@ -51,7 +53,7 @@
       "required": false,
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
         }
       }
     },
@@ -70,7 +72,8 @@
         "i18n": {
           "localized": false
         }
-      }
+      },
+      "default": false
     },
     "CourseSections": {
       "type": "component",
@@ -81,7 +84,8 @@
         }
       },
       "component": "sections.course-section",
-      "required": true
+      "required": true,
+      "min": 1
     }
   }
 }

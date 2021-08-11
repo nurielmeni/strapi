@@ -19,7 +19,8 @@
       "type": "component",
       "repeatable": true,
       "component": "stack.wrong-choice",
-      "required": true
+      "required": true,
+      "min": 1
     }
   }
 }
