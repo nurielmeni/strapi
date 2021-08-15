@@ -60,7 +60,7 @@
       "component": "sections.step",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "required": true,
