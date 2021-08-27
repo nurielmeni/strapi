@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_step_htmls",
+  "info": {
+    "name": "Html",
+    "icon": "code"
+  },
+  "options": {},
+  "attributes": {
+    "stack": {
+      "model": "stack"
+    }
+  }
+}

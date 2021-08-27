@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_step_multi_choices",
+  "info": {
+    "name": "MultiChoice",
+    "icon": "cubes"
+  },
+  "options": {},
+  "attributes": {
+    "drill": {
+      "model": "drill"
+    },
+    "stack": {
+      "model": "stack"
+    }
+  }
+}
