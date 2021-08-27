@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_step_single_choices",
+  "info": {
+    "name": "SingleChoice",
+    "icon": "hand-point-up"
+  },
+  "options": {},
+  "attributes": {
+    "drill": {
+      "model": "drill"
+    },
+    "stack": {
+      "model": "stack"
+    }
+  }
+}

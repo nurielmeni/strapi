@@ -8,7 +8,7 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "debug": "NODE_OPTIONS='--inspect=127.0.0.1:9229' strapi start"
+    "debug": "NODE_OPTIONS='--inspect=127.0.0.1:9230' strapi start"
   },
   "dependencies": {
     "@vue/eslint-config-standard": "^6.0.0",

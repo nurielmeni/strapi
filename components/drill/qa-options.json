@@ -11,6 +11,7 @@
       "type": "enumeration",
       "enum": [
         "Reading",
+        "Hearing",
         "Reading_And_Hearing"
       ],
       "required": true

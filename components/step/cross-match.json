@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_step_cross_matches",
+  "info": {
+    "name": "CrossMatch",
+    "icon": "crosshairs"
+  },
+  "options": {},
+  "attributes": {
+    "drill": {
+      "model": "drill"
+    },
+    "stack": {
+      "model": "stack"
+    }
+  }
+}
