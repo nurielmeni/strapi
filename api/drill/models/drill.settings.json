@@ -98,6 +98,9 @@
     },
     "levels": {
       "collection": "level"
+    },
+    "type": {
+      "model": "type"
     }
   }
 }

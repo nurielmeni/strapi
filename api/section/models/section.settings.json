@@ -66,14 +66,14 @@
       "required": true,
       "min": 1
     },
+    "area": {
+      "model": "area"
+    },
+    "level": {
+      "model": "level"
+    },
     "tags": {
       "collection": "tag"
-    },
-    "areas": {
-      "collection": "area"
-    },
-    "levels": {
-      "collection": "level"
     }
   }
 }
