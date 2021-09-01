@@ -61,6 +61,9 @@
     },
     "tags": {
       "collection": "tag"
+    },
+    "type": {
+      "model": "type"
     }
   }
 }

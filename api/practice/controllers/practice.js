@@ -16,15 +16,22 @@ module.exports = {
   async findOne(ctx) {
     const { id } = ctx.params;
     const { id: userId } = ctx.state.user;
+    console.log('Practice', id, userId);
 
-    const knex = strapi.connections.default;
-    const entity = await knex.raw(`SELECT * FROM components_sections_steps WHERE id=${id}`);
-    
-    const step = entity && entity.rows && Array.isArray(entity.rows) && entity.rows.length ? entity.rows[0] : null;
-    if (step) {
-      step.drill = await strapi.services.drill.findOne(step.drill);
-      step.stack = await strapi.services.drill.findOne(step.stack);
-      return step;
+    const entity = await strapi.query('step').findOne({ id });
+    console.log('Practice:entity:', entity);
+
+
+    if (entity) {
+      const drill = await strapi.query('drill').findOne({ id: entity?.step_type?.[0]?.drill?.id });
+      console.log('Practice:drill:', drill);
+
+      const stack = await strapi.query('stack').findOne({ id: entity?.step_type?.[0]?.stack?.id });
+      console.log('Practice:stack:', stack);
+
+      Object.assign(entity, { drill });
+      Object.assign(entity, { stack });
+      return entity;
     }
 
     ctx.response.status = 204;

@@ -53,8 +53,11 @@
     "level": {
       "model": "level"
     },
-    "tag": {
-      "model": "tag"
+    "tags": {
+      "collection": "tag"
+    },
+    "type": {
+      "model": "type"
     }
   }
 }
