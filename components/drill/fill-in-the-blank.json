@@ -24,6 +24,10 @@
     "show_availiable_choices": {
       "type": "boolean",
       "default": true
+    },
+    "display_placeholder": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

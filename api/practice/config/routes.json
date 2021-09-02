@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/practice/:id",
+      "handler": "practice.findOne",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

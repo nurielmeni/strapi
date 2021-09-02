@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_step_fill_in_the_blanks",
+  "info": {
+    "name": "FillInTheBlank",
+    "icon": "edit"
+  },
+  "options": {},
+  "attributes": {
+    "drill": {
+      "model": "drill"
+    },
+    "stack": {
+      "model": "stack"
+    }
+  }
+}
