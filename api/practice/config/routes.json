@@ -2,8 +2,8 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/practice/:id",
-      "handler": "practice.findOne",
+      "path": "/practice",
+      "handler": "practice.find",
       "config": {
         "policies": []
       }

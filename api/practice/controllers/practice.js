@@ -13,21 +13,19 @@ module.exports = {
    *
    * @return {Object}
    */
-  async findOne(ctx) {
-    const { id } = ctx.params;
+  async find(ctx) {
+    const { stepId, stackId } = ctx.query;
     const { id: userId } = ctx.state.user;
-    console.log('Practice', id, userId);
 
-    const entity = await strapi.query('step').findOne({ id });
-    console.log('Practice:entity:', entity);
-
+    // TODO: Add policy / validation for user
+    const entity = await strapi.query('step').findOne({ id: stepId });
 
     if (entity) {
-      const drill = await strapi.query('drill').findOne({ id: entity?.step_type?.[0]?.drill?.id });
-      console.log('Practice:drill:', drill);
-
-      const stack = await strapi.query('stack').findOne({ id: entity?.step_type?.[0]?.stack?.id });
-      console.log('Practice:stack:', stack);
+      const qStepId = stepId || entity?.step_type?.[0]?.drill?.id;
+      const drill = await strapi.query('drill').findOne({ id:  qStepId});
+      
+      const qStackId = stackId || entity?.step_type?.[0]?.stack?.id;
+      const stack = await strapi.query('stack').findOne({ id: qStackId});
 
       Object.assign(entity, { drill });
       Object.assign(entity, { stack });
@@ -37,4 +35,5 @@ module.exports = {
     ctx.response.status = 204;
     return ctx.response;
   }
+
 };
