@@ -58,6 +58,15 @@
     },
     "type": {
       "model": "type"
+    },
+    "instructions": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext",
+      "required": true
     }
   }
 }
