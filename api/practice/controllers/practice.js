@@ -19,17 +19,32 @@ module.exports = {
 
     // TODO: Add policy / validation for user
     const entity = await strapi.query('step').findOne({ id: stepId });
+    const step = {
+      id: entity?.id, 
+      step_name: entity.step_name,
+      step_type: entity.step_type
+    };
 
     if (entity) {
-      const qStepId = stepId || entity?.step_type?.[0]?.drill?.id;
-      const drill = await strapi.query('drill').findOne({ id:  qStepId});
+
+      const qStepId = entity?.step_type?.[0]?.drill?.id;
+      const rawDrill = await strapi.query('drill').findOne({ id:  qStepId});
+      const drill = sanitizeEntity(rawDrill, {model: strapi.models.drill});
       
       const qStackId = stackId || entity?.step_type?.[0]?.stack?.id;
-      const stack = await strapi.query('stack').findOne({ id: qStackId});
+      const rawStack = await strapi.query('stack').findOne({ id: qStackId});
+      const stack = sanitizeEntity(rawStack, {model: strapi.models.stack});
 
-      Object.assign(entity, { drill });
-      Object.assign(entity, { stack });
-      return entity;
+      const sectionStep = {
+        id: 'practice',
+        name: 'Practice',
+        terms_of_transition: [],
+        step,
+        drill,
+        stack
+      };
+
+      return sectionStep;
     }
 
     ctx.response.status = 204;
