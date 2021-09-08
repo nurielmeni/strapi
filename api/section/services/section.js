@@ -18,9 +18,9 @@ class Range {
   constructor(start, end) {
     if (isNaN(+start) || isNaN(+end))
       throw new Error('Wrong type: Rang accepts only Integer numbers.');
-    if (+end <= +start)
+    if (+end < +start)
       throw new Error(
-        `Wrong values: Rang "end" (${end}) must be grater the "start"(${start}).`
+        `Wrong values: Rang "end" (${end}) must be grater or equal to "start"(${start}).`
       );
 
     this.start = +start;
