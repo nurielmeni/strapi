@@ -9,7 +9,11 @@
     "increments": true,
     "timestamps": true,
     "draftAndPublish": true,
-    "privateAttributes": ["published_at", "created_at", "updated_at"]
+    "privateAttributes": [
+      "published_at",
+      "created_at",
+      "updated_at"
+    ]
   },
   "pluginOptions": {
     "i18n": {
@@ -67,7 +71,7 @@
         }
       },
       "type": "richtext",
-      "required": true
+      "required": false
     }
   }
 }
