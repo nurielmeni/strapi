@@ -72,6 +72,21 @@
       },
       "type": "richtext",
       "required": false
+    },
+    "step_categoty": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "Theory",
+        "Practice",
+        "Test",
+        "Exam",
+        "Assessment"
+      ]
     }
   }
 }
