@@ -73,7 +73,7 @@
       "type": "richtext",
       "required": false
     },
-    "step_categoty": {
+    "step_category": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -86,7 +86,9 @@
         "Test",
         "Exam",
         "Assessment"
-      ]
+      ],
+      "required": true,
+      "default": "Practice"
     }
   }
 }
