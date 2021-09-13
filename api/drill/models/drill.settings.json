@@ -9,7 +9,12 @@
     "increments": true,
     "timestamps": true,
     "draftAndPublish": true,
-    "privateAttributes": ["published_at", "created_at", "updated_at", "type"]
+    "privateAttributes": [
+      "published_at",
+      "created_at",
+      "updated_at",
+      "type"
+    ]
   },
   "pluginOptions": {
     "i18n": {
@@ -94,11 +99,11 @@
     "tags": {
       "collection": "tag"
     },
-    "areas": {
-      "collection": "area"
+    "area": {
+      "model": "area"
     },
-    "levels": {
-      "collection": "level"
+    "level": {
+      "model": "level"
     },
     "type": {
       "model": "type"

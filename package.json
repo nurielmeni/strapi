@@ -11,6 +11,7 @@
     "debug": "NODE_OPTIONS='--inspect=127.0.0.1:9230' strapi start"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-react": "^3.0.2",
     "@vue/eslint-config-standard": "^6.0.0",
     "babel-eslint": "^10.1.0",
     "content-type-parser": "^1.0.2",
