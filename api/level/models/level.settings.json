@@ -2,18 +2,20 @@
   "kind": "collectionType",
   "collectionName": "levels",
   "info": {
-    "name": "Level"
+    "name": "Level",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true,
+    "draftAndPublish": false,
     "privateAttributes": [
       "published_at",
       "created_at",
       "updated_at"
     ]
   },
+  "pluginOptions": {},
   "attributes": {
     "name": {
       "type": "string"
