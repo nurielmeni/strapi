@@ -52,6 +52,39 @@ const configuration = {
         ],
         shouldNotGroupWhenFull: true,
     },
+    fontSize: {
+        options: [
+            {
+                title: 'Tiny',
+                model: '12px'
+            },
+            {
+                title: 'Small',
+                model: '14px'
+            },
+            {
+                title: 'Normal',
+                model: '16px'
+            },
+            {
+                title: 'Big',
+                model: '22px'
+            },
+            {
+                title: 'Bigger',
+                model: '34px'
+            },
+            {
+                title: 'Large',
+                model: '46px'
+            },
+            {
+                title: 'Huge',
+                model: '58px'
+            }
+        ],
+        supportAllValues: true
+    },
     language: {
         textPartLanguage: [
             {
