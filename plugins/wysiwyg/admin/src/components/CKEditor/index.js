@@ -15,37 +15,81 @@ const Wrapper = styled.div`
 `;
 
 const configuration = {
-    toolbar: [
-        'sourceEditing',
-        '|',
-        'heading',
-        '|',
-        'fontFamily',
-        'fontSize',
-        'fontBackgroundColor',
-        'fontColor',
-        '|',
-        'bold',
-        'italic',
-        'underline',
-        'strikethrough',
-        'link',
-        'bulletedList',
-        'numberedList',
-        'horizontalLine',
-        'highlight',
-        '|',
-        'alignment',
-        'indent',
-        'outdent',
-        '|',
-        'undo',
-        'redo',
-        '|',
-        'blockQuote',
-        'insertTable',
-        'mediaEmbed',
-    ],
+    toolbar: {
+        items: [
+            'sourceEditing',
+            '|',
+            'heading',
+            '|',
+            'link',
+            'bulletedList',
+            'numberedList',
+            'highlight',
+            'horizontalLine',
+            '|',
+            'alignment',
+            'outdent',
+            'indent',
+            '|',
+            'blockQuote',
+            'insertTable',
+            'mediaEmbed',
+            '|',
+            'fontColor',
+            'fontFamily',
+            'fontBackgroundColor',
+            'fontSize',
+            '|',
+            'bold',
+            'italic',
+            'strikethrough',
+            'underline',
+            '|',
+            'textPartLanguage',
+            '|',
+            'undo',
+            'redo'
+        ],
+        shouldNotGroupWhenFull: true,
+    },
+    language: {
+        textPartLanguage: [
+            {
+                languageCode: 'en',
+                textDirection: 'ltr',
+                title: 'English'
+            },
+            {
+                languageCode: 'uk',
+                textDirection: 'ltr',
+                title: 'Ukrainian'
+            },
+            {
+                languageCode: 'he',
+                textDirection: 'rtl',
+                title: 'Hebrew'
+            },
+            {
+                languageCode: 'hu',
+                textDirection: 'ltr',
+                title: 'Hungarian'
+            },
+            {
+                languageCode: 'ru',
+                textDirection: 'ltr',
+                title: 'Russian'
+            },
+        ],
+    },
+    table: {
+        contentToolbar: [
+            'tableColumn',
+            'tableRow',
+            'mergeTableCells',
+            'tableCellProperties',
+            'tableProperties'
+        ]
+    },
 };
 
 const Editor = ({ onChange, name, value }) => {
