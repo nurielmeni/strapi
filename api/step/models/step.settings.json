@@ -92,11 +92,12 @@
     "function": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "type": "enumeration",
       "enum": [
+        "HTML",
         "Vocabulary",
         "Pairs",
         "Single_Choice",
@@ -115,7 +116,8 @@
         "Filter_on_Filter_MC",
         "Filter_on_Filter_FITB",
         "Filter_on_Filter_CM"
-      ]
+      ],
+      "required": true
     }
   }
 }
