@@ -18,6 +18,7 @@ const configuration = {
     toolbar: {
         items: [
             'sourceEditing',
+            'htmlEmbed',
             '|',
             'heading',
             '|',
@@ -48,7 +49,8 @@ const configuration = {
             'textPartLanguage',
             '|',
             'undo',
-            'redo'
+            'redo',
+            'findAndReplace',
         ],
         shouldNotGroupWhenFull: true,
     },
