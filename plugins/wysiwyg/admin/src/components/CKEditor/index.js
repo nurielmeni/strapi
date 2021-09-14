@@ -58,11 +58,17 @@ const configuration = {
         allow: [
             // Enables plain <iframe> elements.
             {
-                name: 'iframe'
+                name: 'iframe',
+                attributes: true,
+                classes: true,
+                styles: true
             },
             // Enables plain <div> elements.
             {
-                name: 'div'
+                name: 'div',
+                attributes: true,
+                classes: true,
+                styles: true
             }
         ]
     },  
