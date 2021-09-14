@@ -54,6 +54,18 @@ const configuration = {
         ],
         shouldNotGroupWhenFull: true,
     },
+    htmlSupport: {
+        allow: [
+            // Enables plain <iframe> elements.
+            {
+                name: 'iframe'
+            },
+            // Enables plain <div> elements.
+            {
+                name: 'div'
+            }
+        ]
+    },  
     fontSize: {
         options: [
             {
