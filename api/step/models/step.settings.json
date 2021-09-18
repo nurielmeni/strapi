@@ -61,9 +61,6 @@
     "tags": {
       "collection": "tag"
     },
-    "type": {
-      "model": "type"
-    },
     "instructions": {
       "pluginOptions": {
         "i18n": {
