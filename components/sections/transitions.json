@@ -39,7 +39,7 @@
     },
     "result_feedback": {
       "type": "richtext",
-      "required": true
+      "required": false
     }
   }
 }
