@@ -34,8 +34,7 @@
       "required": true
     },
     "jump_to": {
-      "type": "integer",
-      "min": 0
+      "type": "integer"
     },
     "result_feedback": {
       "type": "richtext",
