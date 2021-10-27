@@ -13,11 +13,11 @@
   "attributes": {
     "firstname": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "lastname": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "birth_date": {
       "type": "date"
@@ -40,6 +40,7 @@
       "pluginOptions": {}
     },
     "user": {
+      "unique": true,
       "via": "profile",
       "plugin": "users-permissions",
       "model": "user"
