@@ -14,10 +14,11 @@
     "section": {
       "model": "section"
     },
-    "termsOfTransition": {
+    "section_terms_of_transition": {
       "type": "component",
       "repeatable": true,
-      "component": "sections.transitions"
+      "component": "sections.section-transitions",
+      "required": true
     }
   }
 }
