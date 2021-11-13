@@ -9,8 +9,12 @@ module.exports = {
   lifecycles: {
     // Called before an entry is created
     beforeCreate(params, data) {
-      const Step = data && data?.Step;
-      const res = strapi.services.section.validateTermsOfTransitionRange(Step);
+      const steps = data && data?.Step;
+      if (!steps || !Array.isArray(steps)) return;
+
+      const tot = steps.map((s) => s.terms_of_transition);
+
+      const res = strapi.services.section.validateTermsOfTransitionRange(tot);
       if (res && res.isValid === false)
         throw strapi.errors.badRequest(res.errMessage);
     },
@@ -18,8 +22,12 @@ module.exports = {
     afterCreate(result) {},
     // Called before an entry is created
     beforeUpdate(params, data) {
-      const Step = data && data?.Step;
-      const res = strapi.services.section.validateTermsOfTransitionRange(Step);
+      const steps = data && data?.Step;
+      if (!steps || !Array.isArray(steps)) return;
+
+      const tot = steps.map((s) => s.terms_of_transition);
+
+      const res = strapi.services.section.validateTermsOfTransitionRange(tot);
       if (res && res.isValid === false)
         throw strapi.errors.badRequest(res.errMessage);
     },
