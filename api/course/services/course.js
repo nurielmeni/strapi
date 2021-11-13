@@ -5,6 +5,8 @@
  * to customize this service
  */
 
+const { validateTermsOfTransitionRange } = require('../../../general/transitionValidation');
+
 module.exports = {
     userCourses: async (user_id) => {
         if (!user_id) return [];
@@ -15,5 +17,6 @@ module.exports = {
         .select('course');
         
         return result.map(c => c.course);
-    }
+    },
+    validateTermsOfTransitionRange
 };
