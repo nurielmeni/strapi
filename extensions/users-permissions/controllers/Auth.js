@@ -498,8 +498,8 @@ module.exports = {
 
       // Assign user locale (Default Locale for the system)
       const code = await strapi.plugins.i18n.services.locales.getDefaultLocale();
-      const locale = await strapi.plugins.i18n.services.locales.findByCode(code);
-      const updatedUser = await strapi.query('user', 'users-permissions').update({ i_18_n_locale: locale.id });
+      const locale = await strapi.plugins.i18n.services.locales.findByCode(params.locale);
+      const updatedUser = await strapi.query('user', 'users-permissions').update({ id: user.id }, { i_18_n_locale: locale.id });
 
       const sanitizedUser = sanitizeEntity(updatedUser, {
         model: strapi.query('user', 'users-permissions').model,
