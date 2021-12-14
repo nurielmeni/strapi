@@ -22,6 +22,17 @@ module.exports = {
     const provider = ctx.params.provider || 'local';
     const params = ctx.request.body;
 
+    // Verify Chrome
+    if (ctx.header?.['user-agent']?.indexOf('Chrome') <= -1) {
+      return ctx.badRequest(
+        null,
+        formatError({
+          id: 'Auth.form.error.invalid',
+          message: 'Unsuported Browser, use Chrome to run this app.',
+        })
+      );
+    }
+
     const store = await strapi.store({
       environment: '',
       type: 'plugin',
@@ -524,9 +535,9 @@ module.exports = {
     } catch (err) {
       const adminError = _.includes(err.message, 'username')
         ? {
-            id: 'Auth.form.error.username.taken',
-            message: 'Username already taken',
-          }
+          id: 'Auth.form.error.username.taken',
+          message: 'Username already taken',
+        }
         : { id: 'Auth.form.error.email.taken', message: 'Email already taken' };
 
       ctx.badRequest(null, formatError(adminError));
