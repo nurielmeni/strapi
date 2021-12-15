@@ -3,7 +3,7 @@ import LogoStrapi from '../../../../assets/images/logo_strapi.png';
 import Img from './Img';
 
 const LogoImg = process.env.STRAPI_LOGO || LogoStrapi;
-const Organization = process.env.STRAPI_ORGANIZATION || 'Theta LMS';
+const Organization = process.env.STRAPI_ORGANIZATION || 'Pirushka';
 
 const Logo = () => (
   <div>
