@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Wrapper from './Wrapper';
 
-const Organization = process.env.STRAPI_ORGANIZATION || 'Theta LMS';
+const Organization = process.env.STRAPI_ORGANIZATION || 'Pirushka';
 
 const LeftMenuHeader = () => (
   <Wrapper>
