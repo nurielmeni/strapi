@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import Logo from '../../../assets/images/logo-strapi.png';
+import LogoStrapi from '../../../assets/images/logo_strapi.png';
+const LogoImg = process.env.STRAPI_LOGO || LogoStrapi;
 
 const Wrapper = styled.div`
   background-color: #007eff;
@@ -22,7 +23,7 @@ const Wrapper = styled.div`
     letter-spacing: 0.2rem;
     color: $white;
 
-    background-image: url(${Logo});
+    background-image: url(${LogoImg});
     background-repeat: no-repeat;
     background-position: left center;
     background-size: auto 2.5rem;
