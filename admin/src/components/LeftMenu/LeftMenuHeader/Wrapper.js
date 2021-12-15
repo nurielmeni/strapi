@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import LogoStrapi from '../../../assets/images/strapi_logo.png';
+import LogoStrapi from '../../../assets/images/logo_strapi.png';
 const LogoImg = process.env.STRAPI_LOGO || LogoStrapi;
 
 const Wrapper = styled.div`
