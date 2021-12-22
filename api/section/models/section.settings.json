@@ -74,6 +74,15 @@
     },
     "tags": {
       "collection": "tag"
+    },
+    "assignment_name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
     }
   }
 }
