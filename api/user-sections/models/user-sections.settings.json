@@ -17,6 +17,7 @@
   },
   "attributes": {
     "section": {
+      "unique": true,
       "model": "section"
     },
     "user": {
