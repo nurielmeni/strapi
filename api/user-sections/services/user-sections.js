@@ -7,6 +7,8 @@
 
 module.exports = {
     validateCreate: async ({ section, user }) => {
+        const knex = strapi.connections.default;
+
         const result = await knex('user_sections')
             .where('user', user)
             .where('section', section)
