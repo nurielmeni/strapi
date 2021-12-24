@@ -14,7 +14,7 @@ module.exports = {
             if (!section || !user) return;
 
 
-            const res = await strapi.services['user-sections'].validateAssignment(section, user);
+            const res = await strapi.services['user-sections'].validateCreate(params);
             if (res && res.isValid === false)
                 throw strapi.errors.badRequest(res.errMessage);
         },
@@ -22,12 +22,9 @@ module.exports = {
         afterCreate(result) { },
         // Called before an entry is created
         async beforeUpdate(params, data) {
-            const section = data && data?.section;
-            const user = data && data?.user;
-            if (!section || !user) return;
+            if (!data?.section || !data?.user) return;
 
-
-            const res = await strapi.services['user-sections'].validateAssignment(section, user, params.id);
+            const res = await strapi.services['user-sections'].validateUpdate(data, params.id);
             if (res && res.isValid === false)
                 throw strapi.errors.badRequest(res.errMessage);
         },
