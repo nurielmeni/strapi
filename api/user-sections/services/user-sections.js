@@ -6,10 +6,7 @@
  */
 
 module.exports = {
-    validateAssignment: async (section, user, id = null) => {
-        if (!section || !user) return true;
-
-        const knex = strapi.connections.default;
+    validateCreate: async ({ section, user }) => {
         const result = await knex('user_sections')
             .where('user', user)
             .where('section', section)
@@ -22,6 +19,13 @@ module.exports = {
             }
         };
 
+        return true;
+    },
+    validateUpdate: async ({ section, user }, id = null) => {
+        if (!section || !user) return true;
+
+        const knex = strapi.connections.default;
+
         if (id) {
             const assignment = await knex('user_sections')
                 .where('id', id)
@@ -30,10 +34,11 @@ module.exports = {
             if (assignment && (assignment.user !== user || assignment.section !== section)) {
                 return {
                     isValid: false,
-                    errMessage: 'Can not change user or course after assignment'
+                    errMessage: 'Can not change User or Section after assignment'
                 }
             };
         }
+
         return true;
     }
 };
