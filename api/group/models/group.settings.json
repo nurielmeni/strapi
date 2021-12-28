@@ -18,9 +18,6 @@
     "description": {
       "type": "richtext"
     },
-    "organization": {
-      "model": "organization"
-    },
     "admin_users": {
       "plugin": "admin",
       "collection": "user"
