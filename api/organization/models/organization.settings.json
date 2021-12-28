@@ -1,25 +1,21 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "organizations",
   "info": {
-    "name": "Organization",
-    "description": ""
+    "name": "Organization"
   },
   "options": {
     "increments": true,
     "timestamps": true,
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "name": {
       "type": "string",
-      "required": true,
-      "unique": true
+      "required": true
     },
-    "description": {
-      "type": "richtext"
-    },
-    "image": {
+    "favicon": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
@@ -28,7 +24,8 @@
         "videos"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     }
   }
 }
