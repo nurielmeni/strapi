@@ -21,9 +21,12 @@ module.exports = {
   async callback(ctx) {
     const provider = ctx.params.provider || 'local';
     const params = ctx.request.body;
+    const allowedBrowsers = ['Chrome', 'Safari'];
+    const useragent = ctx.header?.['user-agent'] ?? [];
 
     // Verify Chrome
-    if (ctx.header?.['user-agent']?.indexOf('Chrome') <= -1) {
+    if (!allowedBrowsers.some(v => useragent.includes(v))) {
+      // There's one
       return ctx.badRequest(
         null,
         formatError({
