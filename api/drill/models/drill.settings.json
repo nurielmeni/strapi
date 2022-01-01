@@ -9,12 +9,7 @@
     "increments": true,
     "timestamps": true,
     "draftAndPublish": true,
-    "privateAttributes": [
-      "published_at",
-      "created_at",
-      "updated_at",
-      "type"
-    ]
+    "privateAttributes": ["published_at", "created_at", "updated_at", "type"]
   },
   "pluginOptions": {
     "i18n": {
@@ -47,6 +42,7 @@
         "drill.vocabulary-drill",
         "drill.pairs",
         "drill.single-choice",
+        "drill.cross-match",
         "drill.multi-choice",
         "drill.fill-in-the-blank"
       ],
@@ -72,13 +68,7 @@
     },
     "drill_category": {
       "type": "enumeration",
-      "enum": [
-        "Practice",
-        "Test",
-        "Exam",
-        "Assessment",
-        "Filter"
-      ],
+      "enum": ["Practice", "Test", "Exam", "Assessment", "Filter"],
       "required": true,
       "pluginOptions": {
         "i18n": {
