@@ -5,4 +5,34 @@
  * to customize this model
  */
 
-module.exports = {};
+module.exports = {
+    lifecycles: {
+        // Called before an entry is created
+        async beforeCreate(params, data) {
+            const step = params?.step_type?.[0] ?? false;
+
+            try {
+                await strapi.services.step.validateStepType(step);
+            } catch (e) {
+                throw strapi.errors.badRequest(e.message);
+            }
+
+
+        },
+        // Called after an entry is created
+        //afterCreate(result) { },
+        // Called before an entry is created
+        async beforeUpdate(params, data) {
+            const step = data?.step_type?.[0] ?? false;
+
+            try {
+                await strapi.services.step.validateStepType(step);
+            } catch (e) {
+                throw strapi.errors.badRequest(e.message);
+            }
+
+        },
+        // Called after an entry is created
+        //afterUpdate(result) { }
+    }
+};
