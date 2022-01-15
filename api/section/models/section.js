@@ -19,7 +19,7 @@ module.exports = {
         throw strapi.errors.badRequest(res.errMessage);
     },
     // Called after an entry is created
-    afterCreate(result) {},
+    //afterCreate(result) {},
     // Called before an entry is created
     beforeUpdate(params, data) {
       const steps = data && data?.Step;
@@ -32,6 +32,6 @@ module.exports = {
         throw strapi.errors.badRequest(res.errMessage);
     },
     // Called after an entry is created
-    afterUpdate(result) {}
+    //afterUpdate(result) {}
   }
 };
