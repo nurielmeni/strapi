@@ -10,7 +10,7 @@ const retrieveTypeFromComponent = (cType, name) => {
     return cType?.__component.split(`${name}.`, 2)?.[1] ?? false;
 }
 
-const validateFilter = async (id, stepType) => {
+const validateFilter = async (id) => {
     // Handle filter step
     if (typeof id !== 'number')
         throw strapi.errors.badRequest(`The drill id is not valid: ${id}`);
@@ -54,7 +54,14 @@ const validateStepType = async (step) => {
     }
 
     // 2. Get the drill and drill type
-    const drill = await strapi.query('drill').findOne({ id: step?.drill });
+    const drillId = step?.drill;
+    if (!drillId || typeof drillId !== 'number')
+        throw strapi.errors.badRequest('You must assign a drill to step');
+
+    const drill = await strapi.query('drill').findOne({ id: drillId });
+    if (drill?.drill_category === 'Filter')
+        throw strapi.errors.badRequest('Drill of Filter category can be assign only to Filter step');
+
     const drillType = retrieveTypeFromComponent(drill?.drill_type?.[0], 'drill');
     if (!drill || !drillType)
         throw strapi.errors.badRequest('Could not get the step drill or type');
@@ -63,7 +70,11 @@ const validateStepType = async (step) => {
         throw strapi.errors.badRequest(`Drill type must be ${stepType}`);
 
     // 3. Get the stack and stack type
-    const stack = await strapi.query('stack').findOne({ id: step?.stack });
+    const stackId = step?.stack;
+    if (!stackId || typeof stackId !== 'number')
+        throw strapi.errors.badRequest('You must assign a stack to step');
+
+    const stack = await strapi.query('stack').findOne({ id: stackId });
     const stackType = retrieveTypeFromComponent(stack?.stackSource?.[0], 'stack');
     if (!stack || !stackType)
         throw strapi.errors.badRequest('Could not get the step stack or type');
