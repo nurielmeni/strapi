@@ -18,14 +18,26 @@
     "description": {
       "type": "richtext"
     },
-    "admin_users": {
-      "plugin": "admin",
-      "collection": "user"
-    },
-    "users": {
-      "via": "groups",
+    "students": {
       "plugin": "users-permissions",
-      "collection": "user"
+      "collection": "user",
+      "via": "group"
+    },
+    "supervisors": {
+      "plugin": "users-permissions",
+      "collection": "user",
+      "via": "supervised_groups",
+      "dominant": true
+    },
+    "courses": {
+      "collection": "course",
+      "via": "groups",
+      "dominant": true
+    },
+    "assignments": {
+      "collection": "section",
+      "via": "groups",
+      "dominant": true
     }
   }
 }
