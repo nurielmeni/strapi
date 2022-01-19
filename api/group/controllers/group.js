@@ -17,7 +17,7 @@ module.exports = {
     const { id: userId } = ctx.state.user;
     let entities;
 
-    const query = { users: +userId, ...ctx.query };
+    const query = { students: +userId, ...ctx.query };
 
     //console.log('Query', query);
     if (ctx.query._q) {
