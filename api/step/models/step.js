@@ -23,6 +23,7 @@ module.exports = {
         //afterCreate(result) { },
         // Called before an entry is created
         async beforeUpdate(params, data) {
+            if ('published_at' in data) return;
             const step = data?.step_type?.[0] ?? false;
 
             try {
