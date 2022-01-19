@@ -86,6 +86,10 @@
       "component": "sections.course-section",
       "required": true,
       "min": 1
+    },
+    "groups": {
+      "via": "courses",
+      "collection": "group"
     }
   }
 }
