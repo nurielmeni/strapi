@@ -63,14 +63,18 @@
       "via": "user",
       "model": "profile"
     },
-    "groups": {
-      "collection": "group",
-      "via": "users",
-      "dominant": true
-    },
     "i_18_n_locale": {
       "plugin": "i18n",
       "model": "locale"
+    },
+    "supervised_groups": {
+      "via": "supervisors",
+      "collection": "group"
+    },
+    "group": {
+      "via": "students",
+      "collection": "group",
+      "dominant": true
     }
   }
 }
