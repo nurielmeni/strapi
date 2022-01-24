@@ -75,11 +75,13 @@ const validateStepType = async (step) => {
         throw strapi.errors.badRequest('You must assign a stack to step');
 
     const stack = await strapi.query('stack').findOne({ id: stackId });
-    const stackType = retrieveTypeFromComponent(stack?.stackSource?.[0], 'stack');
+    let stackType = retrieveTypeFromComponent(stack?.stackSource?.[0], 'stack');
     if (!stack || !stackType)
         throw strapi.errors.badRequest('Could not get the step stack or type');
 
-    // 4. Validate all match
+    // A wrong naming for stack of type pairs (was called 'pair')
+    if (stackType === 'pair') stackType = 'pairs';
+
     if (!stackType.includes(stepType))
         throw strapi.errors.badRequest(`Stack type must be ${stepType}`);
 
