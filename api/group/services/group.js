@@ -5,4 +5,20 @@
  * to customize this service
  */
 
-module.exports = {};
+
+module.exports = {
+    /**
+   * Promise to fetch all records
+   *
+   * @return {Promise}
+   */
+    find(params, populate) {
+        return strapi.query('group').model.fetchAll({
+            ...params,
+            columns: ['id', 'name', 'description'],
+            withRelated: [
+                ...populate
+            ]
+        })
+    },
+};
