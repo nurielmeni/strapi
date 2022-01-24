@@ -18,12 +18,13 @@ module.exports = {
     let entities;
 
     const query = { students: +userId, ...ctx.query };
+    const populate = ['students', 'students.profile', 'supervisors', 'supervisors.profile', 'courses', 'assignments'];
 
     //console.log('Query', query);
     if (ctx.query._q) {
       entities = await strapi.services.group.search(query);
     } else {
-      entities = await strapi.services.group.find(query);
+      entities = await strapi.services.group.find(query, populate);
     }
     //console.log('entities', entities);
 
