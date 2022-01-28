@@ -21,4 +21,40 @@ module.exports = {
             ]
         })
     },
+    async assignCourses(courseId, validMembersId) {
+        let countAssigned = 0;
+        let countSkipped = 0;
+
+        for (const memberId of validMembersId) {
+            try {
+                const entity = await strapi.services['user-course'].create({
+                    course: courseId,
+                    user: memberId
+                });
+                if (entity) countAssigned += 1;
+            } catch (e) {
+                countSkipped += 1
+            }
+        }
+
+        return { countAssigned, countSkipped };
+    },
+
+    async assignAssignments(assignmentId, validMembersId) {
+        let countAssigned = 0;
+        let countSkipped = 0;
+
+        for (const memberId of validMembersId) {
+            try {
+                const entity = await strapi.services['user-sections'].create({
+                    section: assignmentId,
+                    user: memberId
+                });
+                if (entity) countAssigned += 1;
+            } catch (e) {
+                countSkipped += 1
+            }
+        }
+        return { countAssigned, countSkipped };
+    }
 };
