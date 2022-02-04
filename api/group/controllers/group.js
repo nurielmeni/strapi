@@ -18,7 +18,20 @@ module.exports = {
     let entities;
 
     const query = { students: +userId, ...ctx.query };
-    const populate = ['students', 'students.profile', 'supervisors', 'supervisors.profile', 'courses', 'assignments'];
+    const populate = [
+      'students',
+      'students.profile',
+      'supervisors',
+      'supervisors.profile',
+      'courses',
+      'courses.area',
+      'courses.level',
+      'courses.tags',
+      'assignments',
+      'assignments.area',
+      'assignments.level',
+      'assignments.tags',
+    ];
 
     //console.log('Query', query);
     if (ctx.query._q) {
