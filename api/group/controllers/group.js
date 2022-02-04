@@ -61,9 +61,9 @@ module.exports = {
     const validMembersId = membersId.filter(m => group.students.find(gm => gm.id === m));
     if (!validMembersId || validMembersId.length < 1) return ctx.badData('At least one valid Member required');
 
+    const total = { countAssigned: 0, countSkipped: 0 }
 
     if (courseId && Array.isArray(courseId) && courseId.length > 0) {
-      const total = { countAssigned: 0, countSkipped: 0 }
       for (const currCourseId of courseId) {
         const course = group.courses.find(c => c.id === currCourseId);
         if (course) {
@@ -75,9 +75,8 @@ module.exports = {
       return total;
     }
 
-    if (assignmentId) {
-      const total = { countAssigned: 0, countSkipped: 0 }
-      for (const currAssignmentId of courseId) {
+    if (assignmentId && Array.isArray(assignmentId) && assignmentId.length > 0) {
+      for (const currAssignmentId of assignmentId) {
         const assignment = group.assignments.find(a => a.id === currAssignmentId);
         if (assignment) {
           const res = await strapi.services.group.assignAssignments(assignment.id, validMembersId);
@@ -87,6 +86,7 @@ module.exports = {
       }
       return total;
     }
+    return total;
   },
 
   async assignEntities(entityType, entityId, group, validMembersId) {
