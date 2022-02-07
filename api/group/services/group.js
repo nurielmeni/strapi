@@ -12,9 +12,22 @@ module.exports = {
    *
    * @return {Promise}
    */
-    find(params, populate) {
-        return strapi.query('group').model.fetchAll({
-            ...params,
+    async findAssigned() {
+        const populate = [
+            'students',
+            'students.profile',
+            'supervisors',
+            'supervisors.profile',
+            'courses',
+            'courses.area',
+            'courses.level',
+            'courses.tags',
+            'assignments',
+            'assignments.area',
+            'assignments.level',
+            'assignments.tags',
+        ];
+        return await strapi.query('group').model.fetchAll({
             columns: ['id', 'name', 'description'],
             withRelated: [
                 ...populate

@@ -8,44 +8,23 @@ const { sanitizeEntity } = require('strapi-utils');
 
 module.exports = {
   /**
-   * Retrieve a records for user.
+   * Retrieve a records for group.
    *
    * @return {Object}
    */
 
-  async find(ctx) {
+  async findAssigned(ctx) {
     const { id: userId } = ctx.state.user;
-    let entities;
 
-    const query = { students: +userId, ...ctx.query };
-    const populate = [
-      'students',
-      'students.profile',
-      'supervisors',
-      'supervisors.profile',
-      'courses',
-      'courses.area',
-      'courses.level',
-      'courses.tags',
-      'assignments',
-      'assignments.area',
-      'assignments.level',
-      'assignments.tags',
-    ];
-
-    //console.log('Query', query);
-    if (ctx.query._q) {
-      entities = await strapi.services.group.search(query);
-    } else {
-      entities = await strapi.services.group.find(query, populate);
-    }
-    //console.log('entities', entities);
+    const res = await strapi.services.group.findAssigned();
+    const allEntities = sanitizeEntity(res, { model: strapi.models.group });
+    const entities = allEntities.filter(g => g.students.find(s => s.id === +userId) || g.supervisors.find(s => s.id === +userId))
 
     return sanitizeEntity(entities, { model: strapi.models.group });
   },
 
   /**
-   * Retrieve a records for user.
+   * Assign users to courses and assignments.
    *
    * @return {Object}
    */
