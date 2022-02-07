@@ -18,6 +18,14 @@
     },
     {
       "method": "GET",
+      "path": "/groups/assigned",
+      "handler": "group.findAssigned",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/groups/:id",
       "handler": "group.findOne",
       "config": {
