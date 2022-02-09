@@ -430,6 +430,39 @@ module.exports = {
       );
     }
 
+    // Firstname is required.
+    if (!params.firstname) {
+      return ctx.badRequest(
+        null,
+        formatError({
+          id: 'Auth.form.error.firstname.provide',
+          message: 'Please provide your First Name.',
+        })
+      );
+    }
+
+    // Lastname is required.
+    if (!params.lastname) {
+      return ctx.badRequest(
+        null,
+        formatError({
+          id: 'Auth.form.error.lastname.provide',
+          message: 'Please provide your Last Name.',
+        })
+      );
+    }
+
+    // Phone is required.
+    if (!params.phone) {
+      return ctx.badRequest(
+        null,
+        formatError({
+          id: 'Auth.form.error.phone.provide',
+          message: 'Please provide your Phone Number.',
+        })
+      );
+    }
+
     // Throw an error if the password selected by the user
     // contains more than three times the symbol '$'.
     if (strapi.plugins['users-permissions'].services.user.isHashed(params.password)) {
@@ -506,14 +539,27 @@ module.exports = {
       const user = await strapi.query('user', 'users-permissions').create(params);
 
       // Create and assign user profile
+      // Assign firstname, lastname, phone and assign to the profile
+
       const profile = await strapi.services.profile.create({
-        user: user.id
+        user: user.id,
+        firstname: params.firstname,
+        lastname: params.lastname,
+        Phone: [{ number: params.phone }]
       });
 
       // Assign user locale (Default Locale for the system)
       const code = await strapi.plugins.i18n.services.locales.getDefaultLocale();
       const locale = await strapi.plugins.i18n.services.locales.findByCode(params.defaultLocale);
       const updatedUser = await strapi.query('user', 'users-permissions').update({ id: user.id }, { i_18_n_locale: locale?.id });
+
+      // Assign user to group
+      if (params['group-id']) {
+        const group = await strapi.services.group.findOne({ id: +params['group-id'] });
+        if (group) {
+          const res = await strapi.services.group.addStudent(group.id, user.id);
+        }
+      }
 
       const sanitizedUser = sanitizeEntity(updatedUser, {
         model: strapi.query('user', 'users-permissions').model,
