@@ -82,5 +82,10 @@ module.exports = {
         console.log('user:', memberId, ', assignment:', assignmentId, e.message);
       }
     });
+  },
+
+  async update(ctx) {
+    console.log(ctx);
   }
+
 };
