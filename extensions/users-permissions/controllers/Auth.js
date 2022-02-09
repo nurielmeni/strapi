@@ -553,6 +553,14 @@ module.exports = {
       const locale = await strapi.plugins.i18n.services.locales.findByCode(params.defaultLocale);
       const updatedUser = await strapi.query('user', 'users-permissions').update({ id: user.id }, { i_18_n_locale: locale?.id });
 
+      // Assign user to group
+      if (params['group-id']) {
+        const group = await strapi.services.group.findOne({ id: +params['group-id'] });
+        if (group) {
+          const res = await strapi.services.group.addStudent(group.id, user.id);
+        }
+      }
+
       const sanitizedUser = sanitizeEntity(updatedUser, {
         model: strapi.query('user', 'users-permissions').model,
       });

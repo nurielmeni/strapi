@@ -34,6 +34,7 @@ module.exports = {
             ]
         })
     },
+
     async assignCourses(courseId, validMembersId) {
         let countAssigned = 0;
         let countSkipped = 0;
@@ -69,5 +70,17 @@ module.exports = {
             }
         }
         return { countAssigned, countSkipped };
+    },
+
+    async addStudent(groupId, studentId) {
+        // The many-to-many table name in the database
+        const tableName = 'groups_students__users_groups';
+        const knex = strapi.connections.default;
+
+        const res = await knex(tableName).insert({
+            user_id: studentId,
+            group_id: groupId
+        });
+        return res;
     }
 };
