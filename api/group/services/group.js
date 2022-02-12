@@ -27,8 +27,10 @@ module.exports = {
             'assignments.level',
             'assignments.tags',
         ];
+
         return await strapi.query('group').model.fetchAll({
             columns: ['id', 'name', 'description'],
+            draft: false,
             withRelated: [
                 ...populate
             ]

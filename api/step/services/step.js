@@ -60,7 +60,7 @@ const validateStepType = async (step) => {
 
     const drill = await strapi.query('drill').findOne({ id: drillId });
     if (drill?.drill_category === 'Filter')
-        throw strapi.errors.badRequest('Drill of Filter category can be assign only to Filter step');
+        throw strapi.errors.badRequest('Filter Drills can be assigned only to Filter Steps.');
 
     const drillType = retrieveTypeFromComponent(drill?.drill_type?.[0], 'drill');
     if (!drill || !drillType)
