@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "event_logs",
+  "info": {
+    "name": "Event Log",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "time": {
+      "type": "datetime"
+    },
+    "event_log_type": {
+      "model": "event-log-type"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "data": {
+      "type": "json"
+    }
+  }
+}

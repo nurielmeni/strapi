@@ -12,7 +12,12 @@ module.exports = {
    * Not implemented as restricted in usee permitions
    * 
    * @return {Object}
-
+    async ping(ctx) {
+        const { id: userId } = ctx.state.user;
+        const profile = await strapi.services.profile.findOne({ user: userId });
+        const ts = new Date();
+        return ts;
+    }
   /**
    * Retrieve a record.
    *
@@ -24,7 +29,6 @@ module.exports = {
     const { profile: userProfile } = ctx.state.user;
     let entity;
 
-    console.log('Profile findOne: id, userId', id, userProfile);
     if (Number(id) !== Number(userProfile)) {
       return ctx.forbidden();
     }
@@ -48,12 +52,9 @@ module.exports = {
    */
 
   async update(ctx) {
-    console.log('Profile update:ctx',ctx);
     const { id } = ctx.params;
     const { id: userId } = ctx.state.user;
     const body = ctx.request.body;
-    
-    console.log('Profile:update:body',body)
 
     let entity;
 
@@ -67,7 +68,6 @@ module.exports = {
     }
 
     entity = await strapi.services.profile.update({ id }, body);
-    console.log("Profile:update:entity", entity);
 
     return sanitizeEntity(entity, { model: strapi.models.profile });
   },
@@ -85,7 +85,7 @@ module.exports = {
     const [profile] = await strapi.services.profile.find({
       'user.id': userId
     });
-    
+
     // If the user has a profile assign to him, it will be updated 
     // If the user has no profile assign to him, it will be created 
     let entity;
@@ -100,5 +100,6 @@ module.exports = {
 
 
     return sanitizeEntity(entity, { model: strapi.models.profile });
-  }
+  },
+
 };

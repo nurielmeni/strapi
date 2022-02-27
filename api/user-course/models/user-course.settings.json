@@ -47,10 +47,10 @@
       "plugin": "users-permissions",
       "model": "user"
     },
-    "rate": {
-      "type": "decimal",
+    "rating": {
+      "type": "integer",
       "max": 5,
-      "min": 0,
+      "min": 1,
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -64,6 +64,22 @@
           "localized": true
         }
       }
+    },
+    "TM_date": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "datetime"
+    },
+    "time_accumulator": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "time"
     }
   }
 }
