@@ -45,4 +45,25 @@ module.exports = {
         const entity = await strapi.services['event-log'].findOne({ id });
         return sanitizeEntity(entity, { model: strapi.models['event-log'] });
     },
+
+    /**
+     * Retrieve a record.
+     *
+     * @return {Object}
+     */
+
+    async find(ctx) {
+        let { user } = ctx.query;
+        ctx.query.user = +user || ctx?.state?.user?.id;
+        ctx.query._sort = 'time:DESC';
+
+        let entities;
+        if (ctx.query._q) {
+            entities = await strapi.services['event-log'].search(ctx.query);
+        } else {
+            entities = await strapi.services['event-log'].find(ctx.query);
+        }
+
+        return entities.map(entity => sanitizeEntity(entity, { model: strapi.models['event-log'] }));
+    },
 };

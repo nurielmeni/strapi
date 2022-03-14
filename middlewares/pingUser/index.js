@@ -3,7 +3,7 @@ module.exports = strapi => {
         initialize() {
             strapi.app.use(async (ctx, next) => {
                 await next();
-                if (ctx?.state?.user) {
+                if (!ctx?.state?.admin && ctx?.state?.user) {
                     strapi.services.profile.ping(ctx);
                 }
             });
