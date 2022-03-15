@@ -22,15 +22,20 @@ const formatError = error => [
  * write an event log that loges out the user half the time after last ping
  * @param {*} user 
  */
-async function logoutUserPingExpired(user) {
+async function logoutUserPingExpired(user, ctx) {
   const pingTimeout = process.env.PING_TIMEOUT || 3 * 60 * 1000;
   const profile = await strapi.services.profile.findOne({ user: user.id });
   const lastPing = Date.parse(profile.last_ping);
   if (lastPing < Date.now() - pingTimeout) {
     const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: "logout" });
+    if (!eventLogType) {
+      console.log('The type "logout" was not found (event_log_type)');
+      return;
+    }
+
     const logoutLog = await strapi.services['event-log'].create({
       time: lastPing + pingTimeout / 2,
-      event_log_type: eventLogType.id,
+      event_log_type: eventLogType?.id,
       user: user.id,
       data: '{"originator": "ping_expired"}'
     });
@@ -41,13 +46,18 @@ async function logoutUserPingExpired(user) {
  * Write an event log that loges in the user
  * @param {*} user 
  */
-async function userLoggedIn(user) {
+async function userLoggedIn(user, ctx) {
   await logoutUserPingExpired(user);
   // Write the login in the log
   const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: "login" });
+  if (!eventLogType) {
+    console.log('The type "login" was not found (event_log_type)');
+    return;
+  }
+
   const loginLog = await strapi.services['event-log'].create({
     time: Date.now(),
-    event_log_type: eventLogType.id,
+    event_log_type: eventLogType?.id,
     user: user.id
   });
 }
@@ -177,7 +187,7 @@ module.exports = {
           })
         );
       } else {
-        userLoggedIn(user);
+        userLoggedIn(user, ctx);
 
         ctx.send({
           jwt: strapi.plugins['users-permissions'].services.jwt.issue({
@@ -215,7 +225,7 @@ module.exports = {
         return ctx.badRequest(null, error === 'array' ? error[0] : error);
       }
 
-      userLoggedIn(user);
+      userLoggedIn(user, ctx);
 
       ctx.send({
         jwt: strapi.plugins['users-permissions'].services.jwt.issue({

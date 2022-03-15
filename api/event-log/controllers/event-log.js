@@ -20,14 +20,24 @@ module.exports = {
     async create(ctx) {
         const user = ctx.state.user;
         if (!user) return ctx.forbidden('An event log must have a valid User');
-        ;
+
+        //TODO: Accept user id: validate can log to user 
 
         const { time = new Date(), event_log_type } = ctx.request.body;
-        if (!event_log_type) return ctx.forbidden('An event log must have a valid Event Log Type(event_log_type)');
+        let eventLogType;
+        // event_log_type - String - event type name
+        // event_log_type - Number - event type id
+        if (typeof event_log_type === 'string') {
+            eventLogType = await strapi.services['event-log-type'].findOne({ event_type: event_log_type });
+        } else if (typeof event_log_type === 'number') {
+            eventLogType = await strapi.services['event-log-type'].findOne({ id: event_log_type });
+        }
+
+        if (!eventLogType) return ctx.forbidden('An event log must have a valid Event Log Type(event_log_type)');
 
         const entity = await strapi.services['event-log'].create({
             time: time,
-            event_log_type: event_log_type,
+            event_log_type: eventLogType.id,
             user: user.id
         });
         return sanitizeEntity(entity, { model: strapi.models['event-log'] });
