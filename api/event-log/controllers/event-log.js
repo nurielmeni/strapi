@@ -23,7 +23,7 @@ module.exports = {
 
         //TODO: Accept user id: validate can log to user 
 
-        const { time = new Date(), event_log_type } = ctx.request.body;
+        const { time = new Date(), event_log_type, data } = ctx.request.body;
         let eventLogType;
         // event_log_type - String - event type name
         // event_log_type - Number - event type id
@@ -38,7 +38,8 @@ module.exports = {
         const entity = await strapi.services['event-log'].create({
             time: time,
             event_log_type: eventLogType.id,
-            user: user.id
+            user: user.id,
+            data: data && JSON.stringify(data)
         });
         return sanitizeEntity(entity, { model: strapi.models['event-log'] });
     },
