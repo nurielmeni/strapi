@@ -23,6 +23,15 @@ const formatError = error => [
  * @param {*} user 
  */
 async function logoutUserPingExpired(user, ctx) {
+  const eventLoginLogout = await strapi.services['event-log'].find({
+    'event_log_type.event_type_in': ["login", "logout"],
+    _limit: 1,
+    _sort: 'time:DESC'
+  });
+
+  // If the user already logged out skip registering "logout" event
+  if (eventLoginLogout?.[0]?.event_log_type?.event_type === 'logout') return;
+
   const pingTimeout = process.env.PING_TIMEOUT || 3 * 60 * 1000;
   const profile = await strapi.services.profile.findOne({ user: user.id });
   const lastPing = Date.parse(profile.last_ping);
