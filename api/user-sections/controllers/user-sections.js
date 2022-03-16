@@ -52,5 +52,6 @@ module.exports = {
         //console.log('entities', entities);
 
         return sanitizeEntity(entities, { model: strapi.models['user-sections'] });
-    }
+    },
+
 };

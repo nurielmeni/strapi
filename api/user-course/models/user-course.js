@@ -19,7 +19,20 @@ module.exports = {
                 throw strapi.errors.badRequest(res.errMessage);
         },
         // Called after an entry is created
-        afterCreate(result) { },
+        async afterCreate(result) {
+            // Add event log to the user "Assignment Assigned"
+            const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: 'course-assigned' });
+            if (!eventLogType?.id) return;
+
+            const { user, course: { id, name } = {} } = result;
+
+            await strapi.services['event-log'].create({
+                time: new Date(),
+                event_log_type: eventLogType.id,
+                user: user.id,
+                data: JSON.stringify({ course: { id, name } })
+            });
+        },
         // Called before an entry is created
         async beforeUpdate(params, data) {
             if (!data?.course || !data?.user) return;
