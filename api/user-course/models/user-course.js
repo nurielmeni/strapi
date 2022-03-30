@@ -33,7 +33,7 @@ module.exports = {
                 data: JSON.stringify({ course: { id, name } })
             });
         },
-        // Called before an entry is created
+        // Called before an entry is updated
         async beforeUpdate(params, data) {
             if (!data?.course || !data?.user) return;
 
@@ -41,7 +41,8 @@ module.exports = {
             if (res && res.isValid === false)
                 throw strapi.errors.badRequest(res.errMessage);
         },
-        // Called after an entry is created
-        afterUpdate(result) { }
+        // Called after an entry is updated
+        afterUpdate(result, params, data) {
+        }
     }
 };
