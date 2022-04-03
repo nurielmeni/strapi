@@ -7,6 +7,50 @@
 
 const { sanitizeEntity } = require('strapi-utils');
 
+const updateStartDate = async (entity) => {
+    entity = await strapi.services['user-sections'].update({ id: entity.id }, { start_date: new Date() });
+
+    // Add event log to the user "Assignment Start"
+    const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: 'assignment-started' });
+    if (eventLogType?.id) {
+        // section = assignment
+        const { user, section: { id, name } = {} } = entity;
+
+        await strapi.services['event-log'].create({
+            time: new Date(),
+            event_log_type: eventLogType.id,
+            user: user.id,
+            data: JSON.stringify({ section: { id, name } })
+        });
+    }
+}
+
+const updateCompletionDate = async (entity, score) => {
+    if (entity.completed_date) {
+        console.log('updateCompletionDate: alredy completed:', entity.completed_date);
+        return;
+    }
+
+    entity = await strapi.services['user-sections'].update({ id: entity.id }, {
+        completed_date: new Date(),
+        score: score
+    });
+
+    // Add event log to the user "Assignment Completed"
+    const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: 'assignment-completed' });
+    if (eventLogType?.id) {
+        // section = assignment
+        const { user, score, section: { id, name } = {} } = entity;
+
+        await strapi.services['event-log'].create({
+            time: new Date(),
+            event_log_type: eventLogType.id,
+            user: user.id,
+            data: JSON.stringify({ section: { id, name }, score })
+        });
+    }
+}
+
 module.exports = {
     /**
      * Retrieve a records for user.
@@ -44,24 +88,12 @@ module.exports = {
         let entity = await strapi.services['user-sections'].update({ id }, ctx.request.body);
         const { progress: progressAfter } = entity ?? {};
 
+        // Update the completion date
+        const { sectionScore } = ctx.request.body?.progress?.section?.[0] ?? {};
+        if (sectionScore) await updateCompletionDate(entity, sectionScore);
+
         // Update the start date
-        if (entity && !progressBefore && progressAfter) {
-            entity = await strapi.services['user-sections'].update({ id }, { start_date: new Date() });
-
-            // Add event log to the user "Assignment Start"
-            const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: 'assignment-started' });
-            if (eventLogType?.id) {
-                // section = assignment
-                const { user, section: { id, name } = {} } = entity;
-
-                await strapi.services['event-log'].create({
-                    time: new Date(),
-                    event_log_type: eventLogType.id,
-                    user: user.id,
-                    data: JSON.stringify({ section: { id, name } })
-                });
-            }
-        }
+        if (entity && !progressBefore && progressAfter) await updateStartDate(entity);
 
         return sanitizeEntity(entity, { model: strapi.models['user-sections'] });
     },

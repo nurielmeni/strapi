@@ -30,7 +30,7 @@ module.exports = {
                 time: new Date(),
                 event_log_type: eventLogType.id,
                 user: user.id,
-                data: JSON.stringify({ section: { id, assignment_name } })
+                data: JSON.stringify({ section: { id, name: assignment_name } })
             });
         },
         // Called before an entry is updated

@@ -6,6 +6,48 @@ const { sanitizeEntity } = require('strapi-utils');
  * to customize this controller
  */
 
+const updateStartDate = async (entity) => {
+  entity = await strapi.services['user-course'].update({ id: entity.id }, { start_date: new Date() });
+
+  // Add event log to the user "Course Start"
+  const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: 'course-started' });
+  if (eventLogType?.id) {
+    const { user, course: { id, name } = {} } = entity;
+
+    await strapi.services['event-log'].create({
+      time: new Date(),
+      event_log_type: eventLogType.id,
+      user: user.id,
+      data: JSON.stringify({ course: { id, name } })
+    });
+  }
+}
+
+const updateCompletionDate = async (entity, score) => {
+  if (entity.completed_date) {
+    console.log('updateCompletionDate: alredy completed:', entity.completed_date);
+    return;
+  }
+
+  entity = await strapi.services['user-course'].update({ id: entity.id }, {
+    completed_date: new Date(),
+    score: score
+  });
+
+  // Add event log to the user "Course Completed"
+  const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: 'course-completed' });
+  if (eventLogType?.id) {
+    const { user, score, course: { id, name } = {} } = entity;
+
+    await strapi.services['event-log'].create({
+      time: new Date(),
+      event_log_type: eventLogType.id,
+      user: user.id,
+      data: JSON.stringify({ course: { id, name }, score })
+    });
+  }
+}
+
 module.exports = {
   /**
    * Retrieve a records for user.
@@ -43,23 +85,12 @@ module.exports = {
     let entity = await strapi.services['user-course'].update({ id }, ctx.request.body);
     const { progress: progressAfter } = entity ?? {};
 
+    // Update the completion date
+    const { courseScore } = ctx.request.body?.progress ?? {};
+    if (courseScore) await updateCompletionDate(entity, courseScore);
+
     // Update the start date
-    if (entity && !progressBefore && progressAfter) {
-      entity = await strapi.services['user-course'].update({ id }, { start_date: new Date() });
-
-      // Add event log to the user "Course Start"
-      const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: 'course-started' });
-      if (eventLogType?.id) {
-        const { user, course: { id, name } = {} } = entity;
-
-        await strapi.services['event-log'].create({
-          time: new Date(),
-          event_log_type: eventLogType.id,
-          user: user.id,
-          data: JSON.stringify({ course: { id, name } })
-        });
-      }
-    }
+    if (entity && !progressBefore && progressAfter) await updateStartDate(entity);
 
     return sanitizeEntity(entity, { model: strapi.models['user-course'] });
   },
