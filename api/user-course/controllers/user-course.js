@@ -87,6 +87,7 @@ module.exports = {
 
     // Update the completion date
     const { courseScore } = ctx.request.body?.progress ?? {};
+    console.log('courseScore: ', courseScore);
     if (courseScore) await updateCompletionDate(entity, courseScore);
 
     // Update the start date
