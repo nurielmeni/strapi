@@ -90,6 +90,7 @@ module.exports = {
 
         // Update the completion date
         const { sectionScore } = ctx.request.body?.progress?.section?.[0] ?? {};
+        console.log('sectionScore: ', sectionScore);
         if (sectionScore) await updateCompletionDate(entity, sectionScore);
 
         // Update the start date
