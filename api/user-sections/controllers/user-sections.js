@@ -8,6 +8,10 @@
 const { sanitizeEntity } = require('strapi-utils');
 
 const updateStartDate = async (entity) => {
+    if (entity.start_date) {
+        console.log('updateCompletionDate: alredy completed:', entity.start_date);
+        return;
+    }
     entity = await strapi.services['user-sections'].update({ id: entity.id }, { start_date: new Date() });
 
     // Add event log to the user "Assignment Start"
