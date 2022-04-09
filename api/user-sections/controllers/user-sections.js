@@ -93,10 +93,8 @@ module.exports = {
         const { progress: progressAfter } = entity ?? {};
 
         // Update the completion date
-        const { sectionScore } = ctx.request.body?.progress?.section?.[0] ?? {};
-        console.log('sectionScore: ', sectionScore);
-        console.log('ctx.request.body: ', ctx.request.body);
-        if (sectionScore) await updateCompletionDate(entity, sectionScore);
+        const { score } = ctx.request.body ?? {};
+        if (score) await updateCompletionDate(entity, score);
 
         // Update the start date
         if (entity && !progressBefore && progressAfter) await updateStartDate(entity);
