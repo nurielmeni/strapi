@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "event_log_types",
+  "info": {
+    "name": "Event Log Type"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "event_type": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    }
+  }
+}

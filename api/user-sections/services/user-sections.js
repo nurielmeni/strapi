@@ -23,6 +23,7 @@ module.exports = {
 
         return true;
     },
+
     validateUpdate: async ({ section, user }, id = null) => {
         if (!section || !user) return true;
 
@@ -42,5 +43,5 @@ module.exports = {
         }
 
         return true;
-    }
+    },
 };
