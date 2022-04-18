@@ -8,7 +8,7 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "name": {
@@ -33,13 +33,13 @@
       "dominant": true
     },
     "courses": {
-      "collection": "course",
       "via": "groups",
+      "collection": "course",
       "dominant": true
     },
     "assignments": {
-      "collection": "section",
       "via": "groups",
+      "collection": "section",
       "dominant": true
     }
   }

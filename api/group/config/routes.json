@@ -61,7 +61,7 @@
       "path": "/groups/:id",
       "handler": "group.assign",
       "config": {
-        "policies": ["global::is-authenticated", "allow-group-assign"]
+        "policies": ["allow-group-assign"]
       }
     }
   ]

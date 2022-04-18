@@ -19,8 +19,21 @@ module.exports = {
                 throw strapi.errors.badRequest(res.errMessage);
         },
         // Called after an entry is created
-        afterCreate(result) { },
-        // Called before an entry is created
+        async afterCreate(result) {
+            // Add event log to the user "Assignment Assigned"
+            const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: 'course-assigned' });
+            if (!eventLogType?.id) return;
+
+            const { user, course: { id, name } = {} } = result;
+
+            await strapi.services['event-log'].create({
+                time: new Date(),
+                event_log_type: eventLogType.id,
+                user: user.id,
+                data: JSON.stringify({ course: { id, name } })
+            });
+        },
+        // Called before an entry is updated
         async beforeUpdate(params, data) {
             if (!data?.course || !data?.user) return;
 
@@ -28,7 +41,8 @@ module.exports = {
             if (res && res.isValid === false)
                 throw strapi.errors.badRequest(res.errMessage);
         },
-        // Called after an entry is created
-        afterUpdate(result) { }
+        // Called after an entry is updated
+        afterUpdate(result, params, data) {
+        }
     }
 };

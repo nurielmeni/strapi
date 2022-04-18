@@ -17,6 +17,60 @@ const formatError = error => [
   { messages: [{ id: error.id, message: error.message, field: error.field }] },
 ];
 
+/**
+ * Find the last ping of the user and if more the ping timeout
+ * write an event log that loges out the user half the time after last ping
+ * @param {*} user 
+ */
+async function logoutUserPingExpired(user, ctx) {
+  const eventLoginLogout = await strapi.services['event-log'].find({
+    'event_log_type.event_type_in': ["login", "logout"],
+    _limit: 1,
+    _sort: 'time:DESC'
+  });
+
+  // If the user already logged out skip registering "logout" event
+  if (eventLoginLogout?.[0]?.event_log_type?.event_type === 'logout') return;
+
+  const pingTimeout = process.env.PING_TIMEOUT || 3 * 60 * 1000;
+  const profile = await strapi.services.profile.findOne({ user: user.id });
+  const lastPing = Date.parse(profile.last_ping);
+  if (lastPing < Date.now() - pingTimeout) {
+    const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: "logout" });
+    if (!eventLogType) {
+      console.log('The type "logout" was not found (event_log_type)');
+      return;
+    }
+
+    const logoutLog = await strapi.services['event-log'].create({
+      time: lastPing + pingTimeout / 2,
+      event_log_type: eventLogType?.id,
+      user: user.id,
+      data: '{"originator": "ping_expired"}'
+    });
+  }
+}
+
+/**
+ * Write an event log that loges in the user
+ * @param {*} user 
+ */
+async function userLoggedIn(user, ctx) {
+  await logoutUserPingExpired(user);
+  // Write the login in the log
+  const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: "login" });
+  if (!eventLogType) {
+    console.log('The type "login" was not found (event_log_type)');
+    return;
+  }
+
+  const loginLog = await strapi.services['event-log'].create({
+    time: Date.now(),
+    event_log_type: eventLogType?.id,
+    user: user.id
+  });
+}
+
 module.exports = {
   async callback(ctx) {
     const provider = ctx.params.provider || 'local';
@@ -142,6 +196,8 @@ module.exports = {
           })
         );
       } else {
+        userLoggedIn(user, ctx);
+
         ctx.send({
           jwt: strapi.plugins['users-permissions'].services.jwt.issue({
             id: user.id,
@@ -177,6 +233,8 @@ module.exports = {
       if (!user) {
         return ctx.badRequest(null, error === 'array' ? error[0] : error);
       }
+
+      userLoggedIn(user, ctx);
 
       ctx.send({
         jwt: strapi.plugins['users-permissions'].services.jwt.issue({
@@ -667,5 +725,5 @@ module.exports = {
     } catch (err) {
       return ctx.badRequest(null, err);
     }
-  },
+  }
 };

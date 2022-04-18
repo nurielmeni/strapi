@@ -8,19 +8,32 @@
 module.exports = {
     lifecycles: {
         // Called before an entry is created
-        async beforeCreate(params, data) {
-            const section = params && params?.section;
-            const user = params && params?.user;
-            if (!section || !user) return;
+        async beforeCreate(data) {
+            const section = data && data?.section;
+            const user = data && data?.user;
+            if (!section || !user) throw strapi.errors.badRequest('You must provide a user and a section.');
 
 
-            const res = await strapi.services['user-sections'].validateCreate(params);
+            const res = await strapi.services['user-sections'].validateCreate(data);
             if (res && res.isValid === false)
                 throw strapi.errors.badRequest(res.errMessage);
         },
         // Called after an entry is created
-        afterCreate(result) { },
-        // Called before an entry is created
+        async afterCreate(result, data) {
+            // Add event log to the user "Assignment Assigned"
+            const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: 'assignment-assigned' });
+            if (!eventLogType?.id) return;
+
+            const { user, section: { id, assignment_name } = {} } = result;
+
+            await strapi.services['event-log'].create({
+                time: new Date(),
+                event_log_type: eventLogType.id,
+                user: user.id,
+                data: JSON.stringify({ section: { id, name: assignment_name } })
+            });
+        },
+        // Called before an entry is updated
         async beforeUpdate(params, data) {
             if (!data?.section || !data?.user) return;
 
@@ -28,7 +41,8 @@ module.exports = {
             if (res && res.isValid === false)
                 throw strapi.errors.badRequest(res.errMessage);
         },
-        // Called after an entry is created
-        afterUpdate(result) { }
+        // Called after an entry is updated
+        afterUpdate(result) {
+        }
     }
 };
