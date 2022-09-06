@@ -18,13 +18,13 @@ const updateStartDate = async (entity) => {
     const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: 'assignment-started' });
     if (eventLogType?.id) {
         // section = assignment
-        const { user, section: { id, name } = {} } = entity;
+        const { user, section: { id, assignment_name } = {} } = entity;
 
         await strapi.services['event-log'].create({
             time: new Date(),
             event_log_type: eventLogType.id,
             user: user.id,
-            data: JSON.stringify({ section: { id, name } })
+            data: JSON.stringify({ section: { id, name: assignment_name } })
         });
     }
 }
@@ -44,13 +44,13 @@ const updateCompletionDate = async (entity, score) => {
     const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: 'assignment-completed' });
     if (eventLogType?.id) {
         // section = assignment
-        const { user, score, section: { id, name } = {} } = entity;
+        const { user, score, section: { id, assignment_name } = {} } = entity;
 
         await strapi.services['event-log'].create({
             time: new Date(),
             event_log_type: eventLogType.id,
             user: user.id,
-            data: JSON.stringify({ section: { id, name }, score })
+            data: JSON.stringify({ section: { id, name: assignment_name }, score })
         });
     }
 }
