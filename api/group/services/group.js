@@ -12,7 +12,7 @@ module.exports = {
    *
    * @return {Promise}
    */
-    async findAssigned() {
+    async findAssigned(userId) {
         const populate = [
             'students',
             'students.profile',
