@@ -16,7 +16,7 @@ module.exports = {
   async findAssigned(ctx) {
     const { id: userId } = ctx.state.user;
 
-    const res = await strapi.services.group.findAssigned();
+    const res = await strapi.services.group.findAssigned(+userId);
     const allEntities = sanitizeEntity(res, { model: strapi.models.group });
     const entities = allEntities.filter(g => g.students.find(s => s.id === +userId) || g.supervisors.find(s => s.id === +userId))
 
