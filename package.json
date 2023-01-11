@@ -24,6 +24,7 @@
     "strapi-plugin-i18n": "3.6.11",
     "strapi-plugin-upload": "3.6.11",
     "strapi-plugin-users-permissions": "3.6.11",
+    "strapi-provider-email-gmail-2lo": "^3.5.1",
     "strapi-provider-upload-digitalocean": "^3.0.0-alpha.26",
     "strapi-utils": "^3.6.11"
   },
