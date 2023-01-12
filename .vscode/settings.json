@@ -1,0 +1,12 @@
+{
+  "editor.formatOnSave": true,
+  "vetur.validation.template": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#8a1240",
+    "titleBar.activeBackground": "#731880",
+    "titleBar.activeForeground": "#F6FBFB"
+  }
+}
