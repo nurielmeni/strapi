@@ -113,6 +113,11 @@ exports
 build
 .strapi-updater.json
 
+############################
+# Strapi
+############################
+.nuxt
+
 ##
 # Bak Files
 ##
