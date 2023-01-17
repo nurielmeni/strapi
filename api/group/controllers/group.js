@@ -7,6 +7,18 @@
 const { sanitizeEntity } = require('strapi-utils');
 
 module.exports = {
+  async findOne(ctx) {
+    const { id } = ctx.params;
+
+    const entity = await strapi.services.group.findOne({ id }, [
+      'students.profile',
+      'supervisors.profile',
+      'courses',
+      'assignments'
+    ]);
+    return sanitizeEntity(entity, { model: strapi.models.group });
+  },
+
   /**
    * Retrieve a records for group.
    *
