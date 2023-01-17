@@ -12,28 +12,15 @@ module.exports = {
    * @return {Promise}
    */
   async findAssigned(userId) {
-    const populate = [
-      'students',
-      'students.profile',
-      'supervisors',
-      'supervisors.profile',
-      'courses',
-      'courses.area',
-      'courses.level',
-      'courses.tags',
-      'assignments',
-      'assignments.area',
-      'assignments.level',
-      'assignments.tags'
-    ];
+    const knex = strapi.connections.default;
 
     const start = Date.now();
     console.log('GROUPS findAssigned <<<: ', userId, start);
-    const result = await strapi.query('group').model.fetchAll({
-      columns: ['id', 'name', 'description'],
-      draft: false,
-      withRelated: [...populate]
-    });
+
+    const result = await knex('public.groups_supervisors_data')
+      .select()
+      .where('user_id', userId);
+
     const end = Date.now();
     console.log('GROUPS findAssigned >>>: ', userId, end);
     console.log('GROUPS TIMESPAN >>>: ', end - start);
