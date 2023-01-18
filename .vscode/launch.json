@@ -10,6 +10,13 @@
       "name": "Launch Chrome against localhost",
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to strapi",
+      "port": 9230,
+      "localRoot": "${workspaceFolder}/"
     }
   ]
 }

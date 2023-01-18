@@ -7,6 +7,18 @@
 const { sanitizeEntity } = require('strapi-utils');
 
 module.exports = {
+  async findOne(ctx) {
+    const { id } = ctx.params;
+
+    const entity = await strapi.services.group.findOne({ id }, [
+      'students.profile',
+      'supervisors.profile',
+      'courses',
+      'assignments'
+    ]);
+    return sanitizeEntity(entity, { model: strapi.models.group });
+  },
+
   /**
    * Retrieve a records for group.
    *
@@ -17,10 +29,7 @@ module.exports = {
     const { id: userId } = ctx.state.user;
 
     const res = await strapi.services.group.findAssigned(+userId);
-    const allEntities = sanitizeEntity(res, { model: strapi.models.group });
-    const entities = allEntities.filter(g => g.students.find(s => s.id === +userId) || g.supervisors.find(s => s.id === +userId))
-
-    return sanitizeEntity(entities, { model: strapi.models.group });
+    return res;
   },
 
   /**
@@ -33,20 +42,28 @@ module.exports = {
     const { courseId, assignmentId, membersId } = ctx.request.body;
     const { id: groupId } = ctx.params;
 
-    if (!courseId && !assignmentId) return ctx.badData('Course or Assignment required');
-    if (!membersId || !Array.isArray(membersId) || membersId.length < 1) return ctx.badData('At least one Member required');
+    if (!courseId && !assignmentId)
+      return ctx.badData('Course or Assignment required');
+    if (!membersId || !Array.isArray(membersId) || membersId.length < 1)
+      return ctx.badData('At least one Member required');
 
     const group = await strapi.services.group.findOne({ id: groupId });
-    const validMembersId = membersId.filter(m => group.students.find(gm => gm.id === m));
-    if (!validMembersId || validMembersId.length < 1) return ctx.badData('At least one valid Member required');
+    const validMembersId = membersId.filter((m) =>
+      group.students.find((gm) => gm.id === m)
+    );
+    if (!validMembersId || validMembersId.length < 1)
+      return ctx.badData('At least one valid Member required');
 
-    const total = { countAssigned: 0, countSkipped: 0 }
+    const total = { countAssigned: 0, countSkipped: 0 };
 
     if (courseId && Array.isArray(courseId) && courseId.length > 0) {
       for (const currCourseId of courseId) {
-        const course = group.courses.find(c => c.id === currCourseId);
+        const course = group.courses.find((c) => c.id === currCourseId);
         if (course) {
-          const res = await strapi.services.group.assignCourses(course.id, validMembersId);
+          const res = await strapi.services.group.assignCourses(
+            course.id,
+            validMembersId
+          );
           total.countAssigned += res.countAssigned;
           total.countSkipped += res.countSkipped;
         }
@@ -54,11 +71,20 @@ module.exports = {
       return total;
     }
 
-    if (assignmentId && Array.isArray(assignmentId) && assignmentId.length > 0) {
+    if (
+      assignmentId &&
+      Array.isArray(assignmentId) &&
+      assignmentId.length > 0
+    ) {
       for (const currAssignmentId of assignmentId) {
-        const assignment = group.assignments.find(a => a.id === currAssignmentId);
+        const assignment = group.assignments.find(
+          (a) => a.id === currAssignmentId
+        );
         if (assignment) {
-          const res = await strapi.services.group.assignAssignments(assignment.id, validMembersId);
+          const res = await strapi.services.group.assignAssignments(
+            assignment.id,
+            validMembersId
+          );
           total.countAssigned += res.countAssigned;
           total.countSkipped += res.countSkipped;
         }
@@ -69,9 +95,12 @@ module.exports = {
   },
 
   async assignEntities(entityType, entityId, group, validMembersId) {
-    const groupEntity = group[entityType].find(e => e.id === +entityId);
-    if (!groupEntity) return ctx.badData(`The assignment id ${entityId}, was not found in group id ${group.id}`);
-    await validMembersId.forEach(async id => {
+    const groupEntity = group[entityType].find((e) => e.id === +entityId);
+    if (!groupEntity)
+      return ctx.badData(
+        `The assignment id ${entityId}, was not found in group id ${group.id}`
+      );
+    await validMembersId.forEach(async (id) => {
       try {
         const entity = await strapi.services['user-sections'].create({
           section: +entityId,
@@ -79,7 +108,13 @@ module.exports = {
         });
         if (entity) countAssigned += 1;
       } catch (e) {
-        console.log('user:', memberId, ', assignment:', assignmentId, e.message);
+        console.log(
+          'user:',
+          memberId,
+          ', assignment:',
+          assignmentId,
+          e.message
+        );
       }
     });
   },
@@ -87,5 +122,4 @@ module.exports = {
   async update(ctx) {
     console.log(ctx);
   }
-
 };
