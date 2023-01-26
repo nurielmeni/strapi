@@ -39,7 +39,7 @@ module.exports = {
    */
 
   async assign(ctx) {
-    const { courseId, assignmentId, membersId } = ctx.request.body;
+    const { courseId, assignmentId, membersId, tmDate } = ctx.request.body;
     const { id: groupId } = ctx.params;
 
     if (!courseId && !assignmentId)
@@ -62,7 +62,8 @@ module.exports = {
         if (course) {
           const res = await strapi.services.group.assignCourses(
             course.id,
-            validMembersId
+            validMembersId,
+            tmDate
           );
           total.countAssigned += res.countAssigned;
           total.countSkipped += res.countSkipped;
@@ -83,7 +84,8 @@ module.exports = {
         if (assignment) {
           const res = await strapi.services.group.assignAssignments(
             assignment.id,
-            validMembersId
+            validMembersId,
+            tmDate
           );
           total.countAssigned += res.countAssigned;
           total.countSkipped += res.countSkipped;
