@@ -28,7 +28,7 @@ module.exports = {
     return result;
   },
 
-  async assignCourses(courseId, validMembersId) {
+  async assignCourses(courseId, validMembersId, tmDate = null) {
     let countAssigned = 0;
     let countSkipped = 0;
 
@@ -36,7 +36,8 @@ module.exports = {
       try {
         const entity = await strapi.services['user-course'].create({
           course: courseId,
-          user: memberId
+          user: memberId,
+          TM_date: tmDate
         });
         if (entity) countAssigned += 1;
       } catch (e) {
@@ -47,7 +48,7 @@ module.exports = {
     return { countAssigned, countSkipped };
   },
 
-  async assignAssignments(assignmentId, validMembersId) {
+  async assignAssignments(assignmentId, validMembersId, tmDate = null) {
     let countAssigned = 0;
     let countSkipped = 0;
 
@@ -55,7 +56,8 @@ module.exports = {
       try {
         const entity = await strapi.services['user-sections'].create({
           section: assignmentId,
-          user: memberId
+          user: memberId,
+          TM_date: tmDate
         });
         if (entity) countAssigned += 1;
       } catch (e) {
