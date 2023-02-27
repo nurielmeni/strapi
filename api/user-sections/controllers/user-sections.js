@@ -103,12 +103,10 @@ module.exports = {
     const { progress: progressBefore, time_accumulator = 0 } =
       (await strapi.services['user-sections'].findOne({ id })) ?? {};
 
-    // TODO: Update the time accumulator
-    console.log('time_accumulator: ', time_accumulator);
-    console.log('type: ', typeof time_accumulator);
-
+    //! NEW FETURE: Update the time accumulator
     // Time to Add in miliseconds
     const { progress, time_to_add = 0 } = ctx.request.body;
+    console.log('time_to_add', time_to_add);
 
     let entity = await strapi.services['user-sections'].update(
       { id },
