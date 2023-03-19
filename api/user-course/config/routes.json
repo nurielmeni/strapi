@@ -25,6 +25,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/user-courses/:group/:member",
+      "handler": "user-course.groupMemberCourses",
+      "config": {
+        "policies": ["global::allow-group-supervisor"]
+      }
+    },
+    {
       "method": "POST",
       "path": "/user-courses",
       "handler": "user-course.create",

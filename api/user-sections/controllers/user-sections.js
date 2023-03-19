@@ -93,6 +93,25 @@ module.exports = {
   },
 
   /**
+   * Finds the sections for a user by a user id.
+   * Only allowed for group supervisors.
+   * @param {*} ctx
+   *
+   */
+  async groupMemberSections(ctx) {
+    const { group: groupId, member: userId } = ctx.params;
+    console.log('groupMemberSections', groupId, userId);
+
+    const entities = await strapi.services['user-sections'].find({
+      user: userId
+    });
+
+    return sanitizeEntity(entities, {
+      model: strapi.models['user-sections']
+    });
+  },
+
+  /**
    * Update a record.
    *
    * @return {Object}

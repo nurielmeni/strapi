@@ -7,10 +7,15 @@ const { sanitizeEntity } = require('strapi-utils');
  */
 
 const updateStartDate = async (entity) => {
-  entity = await strapi.services['user-course'].update({ id: entity.id }, { start_date: new Date() });
+  entity = await strapi.services['user-course'].update(
+    { id: entity.id },
+    { start_date: new Date() }
+  );
 
   // Add event log to the user "Course Start"
-  const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: 'course-started' });
+  const eventLogType = await strapi.services['event-log-type'].findOne({
+    event_type: 'course-started'
+  });
   if (eventLogType?.id) {
     const { user, course: { id, name } = {} } = entity;
 
@@ -21,21 +26,29 @@ const updateStartDate = async (entity) => {
       data: JSON.stringify({ course: { id, name } })
     });
   }
-}
+};
 
 const updateCompletionDate = async (entity, score) => {
   if (entity.completed_date) {
-    console.log('updateCompletionDate: alredy completed:', entity.completed_date);
+    console.log(
+      'updateCompletionDate: alredy completed:',
+      entity.completed_date
+    );
     return;
   }
 
-  entity = await strapi.services['user-course'].update({ id: entity.id }, {
-    completed_date: new Date(),
-    score: score
-  });
+  entity = await strapi.services['user-course'].update(
+    { id: entity.id },
+    {
+      completed_date: new Date(),
+      score: score
+    }
+  );
 
   // Add event log to the user "Course Completed"
-  const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: 'course-completed' });
+  const eventLogType = await strapi.services['event-log-type'].findOne({
+    event_type: 'course-completed'
+  });
   if (eventLogType?.id) {
     const { user, score, course: { id, name } = {} } = entity;
 
@@ -46,7 +59,7 @@ const updateCompletionDate = async (entity, score) => {
       data: JSON.stringify({ course: { id, name }, score })
     });
   }
-}
+};
 
 module.exports = {
   /**
@@ -73,6 +86,25 @@ module.exports = {
   },
 
   /**
+   * Finds the sections for a user by a user id.
+   * Only allowed for group supervisors.
+   * @param {*} ctx
+   *
+   */
+  async groupMemberCourses(ctx) {
+    const { group: groupId, member: userId } = ctx.params;
+    console.log('groupMemberCourses', groupId, userId);
+
+    const entities = await strapi.services['user-course'].find({
+      user: userId
+    });
+
+    return sanitizeEntity(entities, {
+      model: strapi.models['user-course']
+    });
+  },
+
+  /**
    * Update a record.
    *
    * @return {Object}
@@ -80,9 +112,12 @@ module.exports = {
   async update(ctx) {
     const { id } = ctx.params;
 
-
-    const { progress: progressBefore } = await strapi.services['user-course'].findOne({ id }) ?? {};
-    let entity = await strapi.services['user-course'].update({ id }, ctx.request.body);
+    const { progress: progressBefore } =
+      (await strapi.services['user-course'].findOne({ id })) ?? {};
+    let entity = await strapi.services['user-course'].update(
+      { id },
+      ctx.request.body
+    );
     const { progress: progressAfter } = entity ?? {};
 
     // Update the completion date
@@ -91,7 +126,8 @@ module.exports = {
     if (courseScore) await updateCompletionDate(entity, courseScore);
 
     // Update the start date
-    if (entity && !progressBefore && progressAfter) await updateStartDate(entity);
+    if (entity && !progressBefore && progressAfter)
+      await updateStartDate(entity);
 
     return sanitizeEntity(entity, { model: strapi.models['user-course'] });
   },
