@@ -25,6 +25,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/user-sections/:group/:member",
+      "handler": "user-sections.groupMemberSections",
+      "config": {
+        "policies": ["global::allow-group-supervisor"]
+      }
+    },
+    {
       "method": "POST",
       "path": "/user-sections",
       "handler": "user-sections.create",
