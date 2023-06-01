@@ -83,7 +83,9 @@
           "localized": true
         }
       },
-      "type": "time"
+      "type": "integer",
+      "min": 0,
+      "default": 0
     },
     "rating": {
       "pluginOptions": {

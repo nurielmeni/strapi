@@ -18,6 +18,14 @@
     },
     {
       "method": "GET",
+      "path": "/event-logs/user-time-by-days/:id",
+      "handler": "event-log.userTimeByDays",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/event-logs/:id",
       "handler": "event-log.findOne",
       "config": {
