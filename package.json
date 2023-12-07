@@ -1,0 +1,43 @@
+{
+  "name": "strapi",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "debug": "NODE_OPTIONS='--inspect=127.0.0.1:9230' strapi start"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@ckeditor/ckeditor5-react": "^5.0.6",
+    "knex": "0.21.18",
+    "pg": "8.5.1",
+    "strapi": "3.6.11",
+    "strapi-admin": "3.6.11",
+    "strapi-connector-bookshelf": "3.6.11",
+    "strapi-plugin-content-manager": "3.6.11",
+    "strapi-plugin-content-type-builder": "3.6.11",
+    "strapi-plugin-email": "3.6.11",
+    "strapi-plugin-i18n": "3.6.11",
+    "strapi-plugin-import-export-content": "^0.4.2",
+    "strapi-plugin-upload": "3.6.11",
+    "strapi-plugin-users-permissions": "3.6.11",
+    "strapi-provider-email-gmail-2lo": "^3.5.1",
+    "strapi-provider-upload-digitalocean": "^3.0.0-alpha.26",
+    "strapi-utils": "^3.6.11"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "e61f9ea2-5a1b-4c3b-b5ed-8cf63f460915"
+  },
+  "engines": {
+    "node": ">=10.16.0 <=14.x.x",
+    "npm": "^6.0.0"
+  },
+  "license": "MIT"
+}

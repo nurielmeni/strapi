@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_stack_multi_choice_items",
+  "info": {
+    "name": "MultiChoiceItem",
+    "icon": "list",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "source": {
+      "type": "string",
+      "required": true
+    },
+    "choices": {
+      "required": true,
+      "type": "component",
+      "repeatable": true,
+      "component": "stack.choices",
+      "min": 2
+    }
+  }
+}

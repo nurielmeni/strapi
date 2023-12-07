@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_general_addresses",
+  "info": {
+    "name": "address",
+    "icon": "map-marked-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "street": {
+      "type": "string"
+    },
+    "number": {
+      "type": "integer"
+    },
+    "city": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Home",
+        "Work",
+        "Billing",
+        "Another"
+      ],
+      "default": "Home"
+    },
+    "country": {
+      "model": "country"
+    },
+    "zip": {
+      "type": "string",
+      "maxLength": 10,
+      "minLength": 5,
+      "regex": "^[0-9]{5,10}$"
+    }
+  }
+}

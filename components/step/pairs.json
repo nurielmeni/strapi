@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_step_pairs",
+  "info": {
+    "name": "Pairs",
+    "icon": "hand-peace"
+  },
+  "options": {},
+  "attributes": {
+    "drill": {
+      "model": "drill"
+    },
+    "stack": {
+      "model": "stack"
+    }
+  }
+}

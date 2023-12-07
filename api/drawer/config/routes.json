@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/drawer",
+      "handler": "drawer.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/drawer",
+      "handler": "drawer.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/drawer",
+      "handler": "drawer.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
