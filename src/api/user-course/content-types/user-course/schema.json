@@ -1,0 +1,90 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_courses",
+  "info": {
+    "singularName": "user-course",
+    "pluralName": "user-courses",
+    "displayName": "User-course",
+    "name": "user-course"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "course": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::course.course"
+    },
+    "start_date": {
+      "type": "datetime",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "completed_date": {
+      "type": "datetime",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "score": {
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "rating": {
+      "type": "integer",
+      "max": 5,
+      "min": 1,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "progress": {
+      "type": "json",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "tm_date": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "datetime"
+    },
+    "time_accumulator": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "time"
+    }
+  }
+}

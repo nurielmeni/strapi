@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_drill_typing_aids",
+  "info": {
+    "icon": "keyboard",
+    "displayName": "TypingAids"
+  },
+  "options": {},
+  "attributes": {
+    "display_aid_buttons": {
+      "type": "boolean",
+      "default": true
+    },
+    "aid_buttons_random_order": {
+      "type": "boolean",
+      "default": true
+    },
+    "copy_question_into_answer_box": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

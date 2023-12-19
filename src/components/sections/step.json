@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_sections_steps",
+  "info": {
+    "icon": "file-signature",
+    "description": "",
+    "displayName": "Step"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "terms_of_transition": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.transitions",
+      "required": false
+    },
+    "allow_incomplete_step": {
+      "type": "boolean",
+      "default": false
+    },
+    "step": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::step.step"
+    }
+  }
+}

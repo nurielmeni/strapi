@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_step_htmls",
+  "info": {
+    "icon": "code",
+    "displayName": "Html"
+  },
+  "options": {},
+  "attributes": {
+    "stack": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::stack.stack"
+    }
+  }
+}

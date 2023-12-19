@@ -1,0 +1,118 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sections",
+  "info": {
+    "singularName": "section",
+    "pluralName": "sections",
+    "displayName": "Section",
+    "name": "section"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "unique": false
+    },
+    "subtitle": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "maxLength": 256
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "is_reset": {
+      "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "required": false,
+      "default": false
+    },
+    "step": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.step",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "min": 1
+    },
+    "area": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::area.area"
+    },
+    "level": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::level.level"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tag.tag"
+    },
+    "assignment_name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "groups": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::group.group",
+      "mappedBy": "assignments"
+    },
+    "rating": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
+    },
+    "ratings": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
+    }
+  }
+}

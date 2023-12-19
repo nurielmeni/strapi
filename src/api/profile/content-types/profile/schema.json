@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "profiles",
+  "info": {
+    "singularName": "profile",
+    "pluralName": "profiles",
+    "displayName": "Profile",
+    "name": "profile"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "firstname": {
+      "type": "string",
+      "required": false
+    },
+    "lastname": {
+      "type": "string",
+      "required": false
+    },
+    "birth_date": {
+      "type": "date"
+    },
+    "address": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.address"
+    },
+    "photo": {
+      "type": "media",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "multiple": false,
+      "required": false
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "profile"
+    },
+    "phone": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.phone"
+    },
+    "locale": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::i18n.locale"
+    },
+    "last_ping": {
+      "type": "datetime"
+    }
+  }
+}

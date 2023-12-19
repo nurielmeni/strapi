@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tags",
+  "info": {
+    "singularName": "tag",
+    "pluralName": "tags",
+    "displayName": "Tag",
+    "name": "tag"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false,
+    "privateAttributes": [
+      "published_at",
+      "created_at",
+      "updated_at"
+    ]
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "regex": "^([a-zA-Z_:0-9]){2,20}$",
+      "unique": true,
+      "required": true
+    }
+  }
+}

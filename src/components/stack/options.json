@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_stack_options",
+  "info": {
+    "icon": "check",
+    "displayName": "options"
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string"
+    },
+    "correct": {
+      "type": "boolean"
+    }
+  }
+}

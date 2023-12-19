@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_drill_fill_in_the_blanks",
+  "info": {
+    "icon": "text-width",
+    "description": "",
+    "displayName": "FillInTheBlank"
+  },
+  "options": {},
+  "attributes": {
+    "QAOptions": {
+      "type": "component",
+      "repeatable": false,
+      "component": "drill.qa-options",
+      "required": true
+    },
+    "reply_method": {
+      "type": "enumeration",
+      "enum": [
+        "Dropdown",
+        "Type"
+      ],
+      "required": true
+    },
+    "show_availiable_choices": {
+      "type": "boolean",
+      "default": true
+    },
+    "display_placeholder": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

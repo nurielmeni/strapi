@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "event_log_types",
+  "info": {
+    "singularName": "event-log-type",
+    "pluralName": "event-log-types",
+    "displayName": "Event-log-type",
+    "name": "event-log-type"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "event_type": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    }
+  }
+}

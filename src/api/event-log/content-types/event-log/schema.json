@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "event_logs",
+  "info": {
+    "singularName": "event-log",
+    "pluralName": "event-logs",
+    "displayName": "Event-log",
+    "name": "event-log"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "time": {
+      "type": "datetime"
+    },
+    "event_log_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::event-log-type.event-log-type"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "data": {
+      "type": "json"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_step_filters",
+  "info": {
+    "icon": "filter",
+    "displayName": "Filter"
+  },
+  "options": {},
+  "attributes": {
+    "drill": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::drill.drill"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_drill_single_choices",
+  "info": {
+    "icon": "chess-pawn",
+    "description": "",
+    "displayName": "SingleChoice"
+  },
+  "options": {},
+  "attributes": {
+    "QAOptions": {
+      "type": "component",
+      "repeatable": false,
+      "component": "drill.qa-options",
+      "required": true
+    }
+  }
+}

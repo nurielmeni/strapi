@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_stack_pair_items",
+  "info": {
+    "icon": "grip-lines",
+    "description": "",
+    "displayName": "PairItem"
+  },
+  "options": {},
+  "attributes": {
+    "source": {
+      "type": "string",
+      "required": true
+    },
+    "target": {
+      "type": "string",
+      "required": true
+    },
+    "target_scatter": {
+      "type": "string"
+    },
+    "source_scatter": {
+      "type": "string"
+    }
+  }
+}

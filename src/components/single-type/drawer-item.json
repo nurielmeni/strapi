@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_single_type_drawer_items",
+  "info": {
+    "icon": "minus",
+    "displayName": "drawerItem"
+  },
+  "options": {},
+  "attributes": {
+    "mdi_icon": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "route": {
+      "type": "string"
+    },
+    "counter": {
+      "type": "string"
+    }
+  }
+}
