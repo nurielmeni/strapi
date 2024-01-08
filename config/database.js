@@ -51,7 +51,7 @@ module.exports = ({ env }) => {
       connection: {
         connectionString: env('DATABASE_URL'),
         host: env('DATABASE_HOST', 'localhost'),
-        port: env.int('DATABASE_PORT', 5432),
+        port: env.int('DATABASE_PORT', 5434),
         database: env('DATABASE_NAME', 'db'),
         user: env('DATABASE_USERNAME', 'db'),
         password: env('DATABASE_PASSWORD', 'db'),
