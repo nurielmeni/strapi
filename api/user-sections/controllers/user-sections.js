@@ -103,6 +103,7 @@ module.exports = {
     console.log('groupMemberSections', groupId, userId);
 
     const entities = await strapi.services['user-sections'].find({
+      _limit: -1,
       user: userId
     });
 
