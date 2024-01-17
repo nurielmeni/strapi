@@ -122,3 +122,5 @@ build
 # Bak Files
 ##
 package.bak
+*.bak
+dist
