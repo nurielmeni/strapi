@@ -1,0 +1,21 @@
+{
+    "collectionName": "components_drill_speech_recognitions",
+    "info": {
+        "icon": "volume-down",
+        "description": "",
+        "displayName": "SpeechRecognition"
+    },
+    "options": {},
+    "attributes": {
+        "enable_TTS_on_reply": {
+            "type": "boolean",
+            "required": false,
+            "default": true
+        },
+        "enable_STT_on_reply": {
+            "type": "boolean",
+            "required": false,
+            "default": true
+        }
+    }
+}

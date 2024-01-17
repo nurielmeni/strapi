@@ -1,0 +1,17 @@
+{
+    "collectionName": "components_drill_cross_matches",
+    "info": {
+        "icon": "project-diagram",
+        "description": "",
+        "displayName": "CrossMatch"
+    },
+    "options": {},
+    "attributes": {
+        "QAOptions": {
+            "type": "component",
+            "repeatable": false,
+            "component": "drill.qa-options",
+            "required": true
+        }
+    }
+}

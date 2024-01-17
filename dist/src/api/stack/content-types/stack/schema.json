@@ -1,0 +1,85 @@
+{
+    "kind": "collectionType",
+    "collectionName": "stacks",
+    "info": {
+        "singularName": "stack",
+        "pluralName": "stacks",
+        "displayName": "Stack",
+        "name": "stack"
+    },
+    "options": {
+        "increments": true,
+        "timestamps": true,
+        "draftAndPublish": true,
+        "privateAttributes": [
+            "published_at",
+            "created_at",
+            "updated_at",
+            "type"
+        ]
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "name": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": false
+                }
+            },
+            "required": true
+        },
+        "description": {
+            "type": "richtext",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": false
+                }
+            }
+        },
+        "stack_source": {
+            "type": "dynamiczone",
+            "components": [
+                "stack.vocabulary",
+                "stack.pair",
+                "stack.multi-choice",
+                "stack.single-choice",
+                "stack.content",
+                "stack.cross-match",
+                "stack.fill-in-the-blank"
+            ],
+            "max": 1,
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "min": 1,
+            "required": true
+        },
+        "area": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::area.area"
+        },
+        "level": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::level.level"
+        },
+        "tags": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::tag.tag"
+        },
+        "type": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::type.type"
+        }
+    }
+}

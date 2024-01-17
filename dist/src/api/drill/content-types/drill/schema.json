@@ -1,0 +1,123 @@
+{
+    "kind": "collectionType",
+    "collectionName": "drills",
+    "info": {
+        "singularName": "drill",
+        "pluralName": "drills",
+        "displayName": "Drill",
+        "name": "drill"
+    },
+    "options": {
+        "increments": true,
+        "timestamps": true,
+        "draftAndPublish": true,
+        "privateAttributes": [
+            "published_at",
+            "created_at",
+            "updated_at",
+            "type"
+        ]
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "name": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": false
+                }
+            },
+            "required": true,
+            "unique": false
+        },
+        "description": {
+            "type": "richtext",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "required": false
+        },
+        "drill_type": {
+            "type": "dynamiczone",
+            "components": [
+                "drill.vocabulary-drill",
+                "drill.pairs",
+                "drill.single-choice",
+                "drill.cross-match",
+                "drill.multi-choice",
+                "drill.fill-in-the-blank"
+            ],
+            "max": 1,
+            "pluginOptions": {
+                "i18n": {
+                    "localized": false
+                }
+            },
+            "required": true,
+            "min": 1
+        },
+        "Settings": {
+            "type": "component",
+            "repeatable": false,
+            "component": "drill.drill-settings",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": false
+                }
+            },
+            "required": true
+        },
+        "drill_category": {
+            "type": "enumeration",
+            "enum": [
+                "Practice",
+                "Test",
+                "Exam",
+                "Assessment",
+                "Filter"
+            ],
+            "required": true,
+            "pluginOptions": {
+                "i18n": {
+                    "localized": false
+                }
+            }
+        },
+        "FilterSettings": {
+            "type": "component",
+            "repeatable": false,
+            "component": "drill.filter-settings",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": false
+                }
+            }
+        },
+        "tags": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::tag.tag"
+        },
+        "area": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::area.area"
+        },
+        "level": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::level.level"
+        },
+        "type": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::type.type"
+        }
+    }
+}

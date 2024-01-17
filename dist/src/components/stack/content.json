@@ -1,0 +1,18 @@
+{
+    "collectionName": "components_stack_contents",
+    "info": {
+        "icon": "book-open",
+        "description": "",
+        "displayName": "Content"
+    },
+    "options": {},
+    "attributes": {
+        "description": {
+            "type": "text"
+        },
+        "content": {
+            "type": "richtext",
+            "required": true
+        }
+    }
+}

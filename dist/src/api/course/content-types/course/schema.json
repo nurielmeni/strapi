@@ -1,0 +1,115 @@
+{
+    "kind": "collectionType",
+    "collectionName": "courses",
+    "info": {
+        "singularName": "course",
+        "pluralName": "courses",
+        "displayName": "Course",
+        "name": "course"
+    },
+    "options": {
+        "increments": true,
+        "timestamps": true,
+        "draftAndPublish": true
+    },
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
+    "attributes": {
+        "name": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "required": true
+        },
+        "subtitle": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "maxLength": 256
+        },
+        "description": {
+            "type": "richtext",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "required": true
+        },
+        "image": {
+            "type": "media",
+            "allowedTypes": [
+                "images"
+            ],
+            "multiple": false,
+            "required": false
+        },
+        "tags": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::tag.tag"
+        },
+        "area": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::area.area"
+        },
+        "level": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::level.level"
+        },
+        "is_reset": {
+            "type": "boolean",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": false
+                }
+            },
+            "default": false
+        },
+        "course_sections": {
+            "type": "component",
+            "repeatable": true,
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "component": "sections.course-section",
+            "required": true,
+            "min": 1
+        },
+        "groups": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::group.group",
+            "mappedBy": "courses"
+        },
+        "rating": {
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "type": "integer"
+        },
+        "ratings": {
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "type": "integer"
+        }
+    }
+}

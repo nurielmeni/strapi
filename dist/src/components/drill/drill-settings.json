@@ -1,0 +1,65 @@
+{
+    "collectionName": "components_drill_drill_settings",
+    "info": {
+        "icon": "user-cog",
+        "description": "",
+        "displayName": "DrillSettings"
+    },
+    "options": {},
+    "attributes": {
+        "TimeLimit": {
+            "type": "component",
+            "repeatable": false,
+            "component": "drill.time-limit"
+        },
+        "question_order": {
+            "type": "enumeration",
+            "enum": [
+                "Random",
+                "TopToBottom",
+                "BottomToTop"
+            ],
+            "default": "Random",
+            "required": true
+        },
+        "show_end_results": {
+            "type": "boolean",
+            "default": true
+        },
+        "show_interim_results": {
+            "type": "boolean",
+            "required": false,
+            "default": true
+        },
+        "handling_of_mistakes": {
+            "type": "enumeration",
+            "enum": [
+                "RepeatTheQuestion",
+                "GoToNextQuestion"
+            ],
+            "required": true
+        },
+        "allow_correction_of_mistakes": {
+            "type": "boolean",
+            "default": false
+        },
+        "FeedbackForMistakes": {
+            "type": "enumeration",
+            "enum": [
+                "NoErrorMessage",
+                "ShowErrorMessage",
+                "ShowResultComparison"
+            ],
+            "required": true
+        },
+        "DisplayStack": {
+            "type": "boolean",
+            "default": false
+        },
+        "AllowReset": {
+            "type": "boolean",
+            "required": false,
+            "default": false
+        }
+    }
+}

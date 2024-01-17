@@ -1,0 +1,19 @@
+{
+    "collectionName": "components_stack_type_vocabulary_items",
+    "info": {
+        "icon": "equals",
+        "description": "",
+        "displayName": "VocabularyItem"
+    },
+    "options": {},
+    "attributes": {
+        "source": {
+            "type": "string",
+            "required": true
+        },
+        "target": {
+            "type": "string",
+            "required": true
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "kind": "singleType",
+    "collectionName": "drawers",
+    "info": {
+        "singularName": "drawer",
+        "pluralName": "drawers",
+        "displayName": "Drawer",
+        "name": "drawer"
+    },
+    "options": {
+        "increments": true,
+        "timestamps": true,
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "drawer_item": {
+            "type": "component",
+            "repeatable": true,
+            "component": "single-type.drawer-item"
+        }
+    }
+}

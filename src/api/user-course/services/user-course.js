@@ -8,12 +8,14 @@ const { createCoreService } = require('@strapi/strapi').factories;
 
 module.exports = createCoreService('api::user-course.user-course', ({ strapi }) => ({
   validateCreate: async ({ course, user }) => {
-    const knex = strapi.connections.default;
 
-    const result = await knex('user_courses')
-      .where('user', user)
-      .where('course', course)
-      .select('id');
+    const result = await strapi.db.query('api::user-course.user-course').findMany({
+      where: {
+        user: user?.connect?.[0]?.id,
+        course: course?.connect?.[0]?.id,
+      },
+    });
+
 
     if (result.length > 0) {
       return {
@@ -24,23 +26,12 @@ module.exports = createCoreService('api::user-course.user-course', ({ strapi }) 
 
     return true;
   },
-  validateUpdate: async ({ course, user }, id = null) => {
-    if (!course || !user) return true;
-
-    const knex = strapi.connections.default;
-
-    if (id) {
-      const assignment = await knex('user_courses')
-        .where('id', id)
-        .first();
-
-      if (assignment && (assignment.user !== user || assignment.course !== course)) {
-        return {
-          isValid: false,
-          errMessage: 'Can not change User or Course after assignment'
-        }
-      };
-    }
+  validateUpdate: async ({ course, user }) => {
+    // If any course or user changed return false
+    if (course?.connect?.length || user?.connect?.length) return {
+      isValid: false,
+      errMessage: 'Can not change User or Course after assignment'
+    };
 
     return true;
   }

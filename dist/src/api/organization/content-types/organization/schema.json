@@ -1,0 +1,30 @@
+{
+    "kind": "singleType",
+    "collectionName": "organizations",
+    "info": {
+        "singularName": "organization",
+        "pluralName": "organizations",
+        "displayName": "Organization",
+        "name": "organization"
+    },
+    "options": {
+        "increments": true,
+        "timestamps": true,
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "favicon": {
+            "type": "media",
+            "allowedTypes": [
+                "images"
+            ],
+            "multiple": false,
+            "required": false
+        }
+    }
+}

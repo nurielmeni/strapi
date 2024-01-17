@@ -1,0 +1,48 @@
+{
+    "collectionName": "components_sections_section_transitions",
+    "info": {
+        "icon": "level-down-alt",
+        "description": "",
+        "displayName": "sectionTransitions"
+    },
+    "options": {},
+    "attributes": {
+        "label": {
+            "type": "string",
+            "required": true
+        },
+        "from": {
+            "type": "integer",
+            "max": 100,
+            "min": 0,
+            "required": true
+        },
+        "to": {
+            "type": "integer",
+            "max": 100,
+            "min": 0,
+            "required": true
+        },
+        "action": {
+            "type": "enumeration",
+            "enum": [
+                "Go_To_Next",
+                "Skip",
+                "End_All"
+            ],
+            "required": true
+        },
+        "sections_to_skip": {
+            "type": "integer",
+            "min": 1
+        },
+        "student_choice": {
+            "type": "boolean",
+            "default": false
+        },
+        "result_feedback": {
+            "type": "richtext",
+            "required": false
+        }
+    }
+}

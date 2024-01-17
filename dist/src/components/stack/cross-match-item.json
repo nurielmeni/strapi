@@ -1,0 +1,28 @@
+{
+    "collectionName": "components_stack_cross_matche_items",
+    "info": {
+        "icon": "arrows-alt-h",
+        "description": "",
+        "displayName": "CrossMatch"
+    },
+    "options": {},
+    "attributes": {
+        "Sentence": {
+            "type": "string",
+            "required": true
+        },
+        "MatchingValues": {
+            "type": "component",
+            "repeatable": true,
+            "component": "stack.matching-values",
+            "required": true,
+            "min": 1
+        },
+        "DummyContainers": {
+            "type": "string"
+        },
+        "DummyItems": {
+            "type": "string"
+        }
+    }
+}

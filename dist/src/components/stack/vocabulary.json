@@ -1,0 +1,18 @@
+{
+    "collectionName": "components_stack_type_vocabularies",
+    "info": {
+        "icon": "grip-vertical",
+        "description": "",
+        "displayName": "Vocabulary"
+    },
+    "options": {},
+    "attributes": {
+        "VocabularyItem": {
+            "type": "component",
+            "repeatable": true,
+            "component": "stack.vocabulary-item",
+            "required": true,
+            "min": 1
+        }
+    }
+}

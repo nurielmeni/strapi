@@ -1,0 +1,20 @@
+{
+    "collectionName": "components_stack_matching_values",
+    "info": {
+        "icon": "grip-lines-vertical",
+        "description": "",
+        "displayName": "MatchingValues"
+    },
+    "options": {},
+    "attributes": {
+        "Container": {
+            "type": "string",
+            "required": true,
+            "minLength": 1
+        },
+        "Items": {
+            "type": "string",
+            "required": true
+        }
+    }
+}

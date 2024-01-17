@@ -1,0 +1,21 @@
+{
+    "collectionName": "components_step_vocabularies",
+    "info": {
+        "icon": "book",
+        "description": "",
+        "displayName": "Vocabulary"
+    },
+    "options": {},
+    "attributes": {
+        "drill": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::drill.drill"
+        },
+        "stack": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::stack.stack"
+        }
+    }
+}

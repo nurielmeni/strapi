@@ -1,0 +1,51 @@
+{
+    "kind": "collectionType",
+    "collectionName": "groups",
+    "info": {
+        "singularName": "group",
+        "pluralName": "groups",
+        "displayName": "Group",
+        "name": "group"
+    },
+    "options": {
+        "increments": true,
+        "timestamps": true,
+        "draftAndPublish": false
+    },
+    "attributes": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "subtitle": {
+            "type": "string"
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "students": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "plugin::users-permissions.user",
+            "mappedBy": "group"
+        },
+        "supervisors": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "plugin::users-permissions.user",
+            "inversedBy": "supervised_groups"
+        },
+        "courses": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::course.course",
+            "inversedBy": "groups"
+        },
+        "assignments": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::section.section",
+            "inversedBy": "groups"
+        }
+    }
+}

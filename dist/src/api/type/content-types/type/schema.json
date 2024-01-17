@@ -1,0 +1,28 @@
+{
+    "kind": "collectionType",
+    "collectionName": "types",
+    "info": {
+        "singularName": "type",
+        "pluralName": "types",
+        "displayName": "Type",
+        "name": "type"
+    },
+    "options": {
+        "increments": true,
+        "timestamps": true,
+        "draftAndPublish": false,
+        "privateAttributes": [
+            "published_at",
+            "created_at",
+            "updated_at"
+        ]
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "name": {
+            "type": "string",
+            "required": true,
+            "unique": true
+        }
+    }
+}

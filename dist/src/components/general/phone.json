@@ -1,0 +1,25 @@
+{
+    "collectionName": "components_general_phones",
+    "info": {
+        "icon": "phone",
+        "description": "",
+        "displayName": "phone"
+    },
+    "options": {},
+    "attributes": {
+        "number": {
+            "type": "string",
+            "regex": "^(|[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*)$"
+        },
+        "type": {
+            "type": "enumeration",
+            "enum": [
+                "Mobile",
+                "Home",
+                "Work",
+                "Other"
+            ],
+            "default": "Mobile"
+        }
+    }
+}

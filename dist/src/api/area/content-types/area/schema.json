@@ -1,0 +1,26 @@
+{
+    "kind": "collectionType",
+    "collectionName": "areas",
+    "info": {
+        "singularName": "area",
+        "pluralName": "areas",
+        "displayName": "Area",
+        "name": "area"
+    },
+    "options": {
+        "increments": true,
+        "timestamps": true,
+        "draftAndPublish": false,
+        "privateAttributes": [
+            "published_at",
+            "created_at",
+            "updated_at"
+        ]
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "name": {
+            "type": "string"
+        }
+    }
+}
