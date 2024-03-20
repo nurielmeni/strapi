@@ -112,6 +112,7 @@ exports
 *.cache
 build
 .strapi-updater.json
+.strapi
 
 ############################
 # Strapi
@@ -122,3 +123,5 @@ build
 # Bak Files
 ##
 package.bak
+*.bak
+dist
