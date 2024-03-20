@@ -22,7 +22,7 @@ const formatError = error => [
  * write an event log that loges out the user half the time after last ping
  * @param {*} user 
  */
-async function logoutUserPingExpired(user, ctx) {
+async function logoutUserPingExpired (user, ctx) {
   const eventLoginLogout = await strapi.services['event-log'].find({
     'event_log_type.event_type_in': ["login", "logout"],
     _limit: 1,
@@ -55,7 +55,7 @@ async function logoutUserPingExpired(user, ctx) {
  * Write an event log that loges in the user
  * @param {*} user 
  */
-async function userLoggedIn(user, ctx) {
+async function userLoggedIn (user, ctx) {
   await logoutUserPingExpired(user);
   // Write the login in the log
   const eventLogType = await strapi.services['event-log-type'].findOne({ event_type: "login" });
@@ -72,7 +72,7 @@ async function userLoggedIn(user, ctx) {
 }
 
 module.exports = {
-  async callback(ctx) {
+  async callback (ctx) {
     const provider = ctx.params.provider || 'local';
     const params = ctx.request.body;
     const allowedBrowsers = ['Chrome', 'Safari', 'PostmanRuntime'];
@@ -247,7 +247,7 @@ module.exports = {
     }
   },
 
-  async resetPassword(ctx) {
+  async resetPassword (ctx) {
     const params = _.assign({}, ctx.request.body, ctx.params);
 
     if (
@@ -310,7 +310,7 @@ module.exports = {
     }
   },
 
-  async connect(ctx, next) {
+  async connect (ctx, next) {
     const grantConfig = await strapi
       .store({
         environment: '',
@@ -342,7 +342,7 @@ module.exports = {
     return grant(grantConfig)(ctx, next);
   },
 
-  async forgotPassword(ctx) {
+  async forgotPassword (ctx) {
     let { email } = ctx.request.body;
 
     // Check if the provided email is valid or not.
@@ -440,7 +440,7 @@ module.exports = {
     ctx.send({ ok: true });
   },
 
-  async register(ctx) {
+  async register (ctx) {
     const pluginStore = await strapi.store({
       environment: '',
       type: 'plugin',
@@ -640,7 +640,7 @@ module.exports = {
         user: sanitizedUser,
       });
     } catch (err) {
-      const adminError = _.includes(err.message, 'username')
+      const adminError = _.includes(err.message, 'username') || _.includes(err.message, 'Duplicate')
         ? {
           id: 'Auth.form.error.username.taken',
           message: 'Username already taken',
@@ -651,7 +651,7 @@ module.exports = {
     }
   },
 
-  async emailConfirmation(ctx, next, returnUser) {
+  async emailConfirmation (ctx, next, returnUser) {
     const { confirmation: confirmationToken } = ctx.query;
 
     const { user: userService, jwt: jwtService } = strapi.plugins['users-permissions'].services;
@@ -689,7 +689,7 @@ module.exports = {
     }
   },
 
-  async sendEmailConfirmation(ctx) {
+  async sendEmailConfirmation (ctx) {
     const params = _.assign(ctx.request.body);
 
     if (!params.email) {
