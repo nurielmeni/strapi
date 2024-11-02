@@ -75,7 +75,7 @@ module.exports = {
   async callback (ctx) {
     const provider = ctx.params.provider || 'local';
     const params = ctx.request.body;
-    const allowedBrowsers = ['Chrome', 'Safari', 'PostmanRuntime'];
+    const allowedBrowsers = ['Chrome', 'Safari', 'rest-client'];
     const useragent = ctx.header?.['user-agent'] ?? [];
 
     // Verify Chrome
