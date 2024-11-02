@@ -11,7 +11,7 @@ module.exports = {
    *
    * @return {Promise}
    */
-  async findAssigned(userId) {
+  async findAssigned (userId) {
     const knex = strapi.connections.default;
 
     const start = Date.now();
@@ -28,7 +28,7 @@ module.exports = {
     return result;
   },
 
-  async assignCourses(courseId, validMembersId, tmDate = null) {
+  async assignCourses (courseId, validMembersId, tmDate = null) {
     let countAssigned = 0;
     let countSkipped = 0;
 
@@ -48,7 +48,7 @@ module.exports = {
     return { countAssigned, countSkipped };
   },
 
-  async assignAssignments(assignmentId, validMembersId, tmDate = null) {
+  async assignAssignments (assignmentId, validMembersId, tmDate = null) {
     let countAssigned = 0;
     let countSkipped = 0;
 
@@ -67,7 +67,7 @@ module.exports = {
     return { countAssigned, countSkipped };
   },
 
-  async addStudent(groupId, studentId) {
+  async addStudent (groupId, studentId) {
     // The many-to-many table name in the database
     const tableName = 'groups_students__users_groups';
     const knex = strapi.connections.default;
