@@ -1,6 +1,8 @@
 module.exports = ({ env }) => {
   const databaseUrl = env('DATABASE_URL');
 
+  console.log('DATABASE_URL:', databaseUrl); // Log the DATABASE_URL for debugging
+
   if (databaseUrl) {
     return {
       connection: {
