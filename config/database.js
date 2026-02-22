@@ -9,7 +9,7 @@ module.exports = ({ env }) => {
         client: 'postgres',
         connection: {
           connectionString: databaseUrl,
-          ssl: false
+          ssl: true
         }
       }
     };
