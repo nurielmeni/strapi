@@ -14,11 +14,22 @@ module.exports = {
     let profile = await strapi.services.profile.findOne({ user: userId });
 
     if (profile) {
-      // Update existing profile by id to avoid connector "entry.notFound" errors
-      profile = await strapi.services.profile.update(
-        { id: profile.id },
-        { last_ping: now }
-      );
+      try {
+        profile = await strapi.services.profile.update(
+          { id: profile.id },
+          { last_ping: now }
+        );
+      } catch (error) {
+        // Profile may have been removed between findOne and update.
+        if (error.message !== 'entry.notFound') {
+          throw error;
+        }
+
+        profile = await strapi.services.profile.create({
+          user: userId,
+          last_ping: now
+        });
+      }
     } else {
       // Create a new profile if none exists
       profile = await strapi.services.profile.create({
