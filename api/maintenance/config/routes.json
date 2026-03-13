@@ -1,0 +1,20 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/admin/maintenance/group-indexes",
+      "handler": "maintenance.statusGroupIndexes",
+      "config": {
+        "policies": ["admin::isAuthenticatedAdmin"]
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/admin/maintenance/group-indexes",
+      "handler": "maintenance.createGroupIndexes",
+      "config": {
+        "policies": ["admin::isAuthenticatedAdmin"]
+      }
+    }
+  ]
+}
