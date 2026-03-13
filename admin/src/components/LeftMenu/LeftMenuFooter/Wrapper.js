@@ -4,8 +4,37 @@ import PropTypes from 'prop-types';
 const Wrapper = styled.div`
   position: absolute;
   width: 100%;
-  background: ${props => props.theme.main.colors.strapi['blue-darker']};
+  background: ${(props) => props.theme.main.colors.strapi['blue-darker']};
   bottom: 0;
+  .maintenanceAction {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 15px;
+    gap: 6px;
+
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 4px;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #0f2a46;
+      background: #d9ecff;
+      cursor: pointer;
+
+      &:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+      }
+    }
+
+    small {
+      color: ${({ theme }) => theme.main.colors.strapi['gray-light']};
+      line-height: 1.25;
+    }
+  }
+
   .poweredBy {
     width: 100%;
     bottom: 0;
@@ -33,18 +62,18 @@ Wrapper.defaultProps = {
   theme: {
     main: {
       colors: {
-        strapi: {},
+        strapi: {}
       },
       sizes: {
         header: {},
-        leftMenu: {},
-      },
-    },
-  },
+        leftMenu: {}
+      }
+    }
+  }
 };
 
 Wrapper.propTypes = {
-  theme: PropTypes.object,
+  theme: PropTypes.object
 };
 
 export default Wrapper;
