@@ -21,7 +21,10 @@ module.exports = {
         );
       } catch (error) {
         // Profile may have been removed between findOne and update.
-        if (error.message !== 'entry.notFound') {
+        const isEntryNotFound =
+          error?.id === 'entry.notFound' || error?.message === 'entry.notFound';
+
+        if (!isEntryNotFound) {
           throw error;
         }
 
